@@ -17,4 +17,4 @@ jobs:
 
       - name: SSH into the server and create a directory
         run: |
-         ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@43.204.143.125 "sudo touch /opt/abcd.txt"
+         ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@43.204.143.125 "touch /opt/abcd.txt"
