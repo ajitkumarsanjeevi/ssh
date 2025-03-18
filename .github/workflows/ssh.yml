@@ -9,6 +9,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # Log in to AWS ECR
+      - name: Log in to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v1
+
+      # Build the Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t docker build -t nginx .
+
+      # Push the Docker image to ECR
+      - name: tag
+        run: |
+          docker push docker tag nginx:latest 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
+
+      - name: push  
+        run: |
+           docker tag nginx:latest 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
+
+
       - name: ssh
         run: |
             mkdir -p ~/.ssh
