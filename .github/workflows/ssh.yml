@@ -22,9 +22,9 @@ jobs:
       # Build the Docker image
       - name: Build Docker image
         run: |
-          docker build -t docker build -t nginx .
+          docker build -t docker nginx .
 
-      # Push the Docker image to ECR
+      # tag
       - name: tag
         run: |
           docker push docker tag nginx:latest 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
