@@ -1,1 +1,23 @@
+name: Remote Deployment
 
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: ssh
+        run: |
+            sudo mkdir ~/.ssh
+            sudo echo "${{ secrets.PEM_KEY }}" > ~/.ssh/id_rsa
+            sudo chmod 600 ~/.ssh/id_rsa
+
+      - name: SSH into the server and create a directory
+        run: |
+        # SSH using the -i flag to specify the path to the id_rsa key
+        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@43.204.143.125 "sudo touch /opt/abcd.txt"
