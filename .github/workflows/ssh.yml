@@ -35,7 +35,7 @@ jobs:
 
       - name: push  
         run: |
-           docker push docker tag nginx:latest 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
+           docker push 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
 
 
       - name: ssh
