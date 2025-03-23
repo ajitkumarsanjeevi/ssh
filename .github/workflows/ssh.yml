@@ -24,4 +24,5 @@ jobs:
 
       - name: SSH into the server and create a directory
         run: |
+         ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@13.203.198.148 "sudo chmod 777 /opt"
          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@13.203.198.148 "sudo touch /opt/abcd.txt"
