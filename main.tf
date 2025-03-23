@@ -101,36 +101,52 @@ resource "aws_security_group" "efs-sg" {
   }
 }	
 
+variable "server_configs" {        
+  description = "A map of server configurations"                                                 
+  type = map(object({
+    name          = string
+    ami           = string
+    keyname       = string
+    ami           = sting
+    instance_type = string
+    availability_zone = string 
+  
+  }))
+  default = {
+    "web_server" = {
+      name          = "instance-1"
+      ami           = "ami-12345678"       
+      instance_type = "t2.micro"
+      key_name       = "splunk" 
+      availability_zone = "ap-south-1a"   
+    }
+ 
+   "web_server" = {
+      name          = "instance-2" 
+      ami           = "ami-12345678"       
+      instance_type = "t2.micro"
+      key_name       = "splunk" 
+      availability_zone = "ap-south-1b"
+    }
+ }
+}
 
-# Create two EC2 instances in different availability zones
-resource "aws_instance" "instance_1" {
-  ami           = "ami-0c55b159cbfafe1f0"
-  key_name      = "remote"
-  instance_type = "t2.micro"
-  availability_zone = "us-east-1a"     
-  subnet_id   = aws_subnet.public_subnet_1.id 
-  vpc_security_group_ids = [aws_security_group.efs-sg.id]
-      
+resource "aws_instance" "server" {  
+  for_each = var.server_configs
 
+  ami           = each.value.ami
+  key_name      = each.value.key_name
+  instance_type = each.value.instance_type  
+  subnet_id     = [aws_subnet.public_subnet_1.id, aws_subnet_2.public_subnet_2.id]
+  availability_zone = each.value.availabilityzone
+  vps_security_group_ids = [aws_security_group.efs-sg.id]    
   tags = {
-    Name = "Instance-1"
+    Name = each.value.name
   }
 }
 
-resource "aws_instance" "instance_2" {
-  ami           = "ami-0c55b159cbfafe1f0"
-  key_name      = "remote"
-  instance_type = "t2.micro"
-  availability_zone = "us-east-1b"  
-  subnet_id   = aws_subnet.public_subnet_2.id 
-  vpc_security_group_ids = [aws_security_group.efs-sg.id]
-      
-        
 
-  tags = {
-    Name = "Instance-2"
-  }
-}
+
 resource "aws_efs_file_system" "example" {
   creation_token = "example-token"  
   performance_mode = "generalPurpose"  
