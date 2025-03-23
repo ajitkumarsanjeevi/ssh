@@ -102,7 +102,35 @@ resource "aws_security_group" "efs-sg" {
 }	
 
 
+# Create two EC2 instances in different availability zones
+resource "aws_instance" "instance_1" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  key_name      = "remote"
+  instance_type = "t2.micro"
+  availability_zone = "us-east-1a"     
+  subnet_id   = aws_subnet.public_subnet_1.id 
+  vpc_security_group_ids = [aws_security_group.efs-sg.id]
+      
 
+  tags = {
+    Name = "Instance-1"
+  }
+}
+
+resource "aws_instance" "instance_2" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  key_name      = "remote"
+  instance_type = "t2.micro"
+  availability_zone = "us-east-1b"  
+  subnet_id   = aws_subnet.public_subnet_2.id 
+  vpc_security_group_ids = [aws_security_group.efs-sg.id]
+      
+        
+
+  tags = {
+    Name = "Instance-2"
+  }
+}
 resource "aws_efs_file_system" "example" {
   creation_token = "example-token"  
   performance_mode = "generalPurpose"  
