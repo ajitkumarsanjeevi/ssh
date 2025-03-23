@@ -18,7 +18,7 @@ jobs:
       
       - name: ssh
         run: |
-            sudo  mkdir -p ~/.ssh
+            mkdir -p ~/.ssh
             sudo echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa 
             sudo chmod 600 ~/.ssh/id_rsa
 
