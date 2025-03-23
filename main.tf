@@ -109,7 +109,7 @@ resource "aws_instance" "server" {
   instance_type = "t2.micro" 
   subnet_id     = aws_subnet.public_subnet_1.id
   availability_zone = "us-east-1a"
-  vps_security_group_ids = [aws_security_group.efs-sg.id]    
+  vpc_security_group_ids = [aws_security_group.efs-sg.id]    
   tags = {
     Name = "instance-1"
   }
