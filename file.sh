@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo touch abc.txt
+sudo touch /opt/abc.txt
