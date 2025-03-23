@@ -22,10 +22,10 @@ jobs:
       - name: ssh
         run: |
             mkdir -p ~/.ssh
-            sudo echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa 
+            sudo echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
             sudo chmod 600 ~/.ssh/id_rsa
 
       - name: SSH into the server and create a directory
         run: |
-         scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa remote.sh ec2-user@13.235.83.119:/opt
+         scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa remote.sh ec2-user@98.84.143.97:/opt
     
