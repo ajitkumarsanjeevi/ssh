@@ -8,6 +8,7 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    continue-on-error: true 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -33,7 +34,6 @@ jobs:
       - name: SSH into the server and create a directory
         run: |
           
-          continue-on-error: true
 
           usernames=("ubuntu" "ec2-user" "admin")     
 
