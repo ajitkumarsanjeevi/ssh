@@ -35,5 +35,4 @@ variable "server_configs" {
       key_name       = "remote" 
       availability_zone = "us-east-1b"
     }
-  }
 }
