@@ -5,7 +5,7 @@ ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')
 
 path="efs"     
 
-Dns="fs-0b42953bbad808c3d.efs.ap-south-1.amazonaws.com"                                              
+Dns="fs-0d05ffa37b24f2c35.efs.us-east-1.amazonaws.com"                                   
 
 function_ubuntu(){  
 
