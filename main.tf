@@ -103,7 +103,6 @@ resource "aws_security_group" "efs-sg" {
 
 
 resource "aws_instance" "server" {  
-  for_each = var.server_configs
 
   ami           = "ami-08b5b3a93ed654d19"
   key_name      = "remote"
