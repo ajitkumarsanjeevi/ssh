@@ -28,8 +28,7 @@ jobs:
       - name: init
         run: terraform init
 
-      - name: destroy
-        run: terraform destroy -auto-approve
+      
       
       - name: ssh
         run: |
