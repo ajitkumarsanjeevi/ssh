@@ -6,7 +6,7 @@ on:
       - main  
 
 jobs:
-  deploy:
+  job1:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -36,6 +36,17 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa  ec2-user@98.84.143.97 "sudo chmod 777 /opt"
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa file.sh ec2-user@98.84.143.97:/opt
     
+              
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run the second job
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa  ec2-user@98.84.143.97 "sudo chmod 777 /opt"
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa file.sh ec2-user@98.84.143.97:/opt
+    
           usernames=("ubuntu" "ec2-user" "admin")    
           ips=("52.66.71.16")
 
@@ -51,5 +62,3 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i /home/ec2-user/linux.pem "$username"@"$ip" "sudo bash /opt/file.sh"                                               
 
           done
-
-          
