@@ -17,27 +17,7 @@ jobs:
           aws-region: ap-south-1
       - name: Checkout code
         uses: actions/checkout@v3
-        
-      - name: argocd
-        run: argocd version
-      # Log in to AWS ECR
-      - name: Log in to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v1 
-
-      # Build the Docker image
-      - name: Build Docker image
-        run: |
-          docker build -t nginx .
-
-      # tag
-      - name: tag
-        run: |
-          
-          docker tag nginx:latest 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
-
-      - name: push  
-        run: |
-           docker push 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
+      
 
 
       - name: ssh
