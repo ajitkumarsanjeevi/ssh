@@ -44,11 +44,25 @@ jobs:
           for ip in "${ips[@]}"; do
  
 
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"    
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" 
+
+          if [ $? -eq 255 ]; then
+            echo "ignore" 
+
+            fi
 
           scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa file.sh  "$username"@"$ip":/opt
 
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/file.sh"                          
+          if [ $? -eq 255 ]; then
+            echo "ignore" 
+
+            fi
+
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/file.sh" 
+          if [ $? -eq 255 ]; then
+            echo "ignore" 
+
+            fi
 
           done
 
