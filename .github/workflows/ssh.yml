@@ -27,5 +27,5 @@ jobs:
 
       - name: SSH into the server and create a directory
         run: |
-         scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa remote.sh ec2-user@13.203.198.148:/opt
+         scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa remote.sh ec2-user@13.235.83.119:/opt
     
