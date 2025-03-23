@@ -105,14 +105,14 @@ resource "aws_security_group" "efs-sg" {
 resource "aws_instance" "server" {  
   for_each = var.server_configs
 
-  ami           = each.value.ami
-  key_name      = each.value.key_name
+  ami           = "ami-08b5b3a93ed654d19"
+  key_name      = "remote"
   instance_type = each.value.instance_type  
   subnet_id     = [aws_subnet.public_subnet_1.id, aws_subnet_2.public_subnet_2.id]
-  availability_zone = each.value.availabilityzone
+  availability_zone = "us-east-1a"
   vps_security_group_ids = [aws_security_group.efs-sg.id]    
   tags = {
-    Name = each.value.name
+    Name = "instance-1"
   }
 }
 
