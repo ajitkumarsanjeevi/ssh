@@ -17,8 +17,6 @@ jobs:
           aws-region: ap-south-1
       - name: Checkout code
         uses: actions/checkout@v3
-
-        steps:
       - name: Checkout Code
         uses: actions/checkout@v2
        
