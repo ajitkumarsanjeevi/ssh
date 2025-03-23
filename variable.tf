@@ -27,12 +27,5 @@ variable "server_configs" {
       key_name       = "remote" 
       availability_zone = "us-east-1a"   
     }
- 
-   "web_server" = {
-      name          = "instance-2" 
-      ami           = "ami-12345678"       
-      instance_type = "t2.micro"
-      key_name       = "remote" 
-      availability_zone = "us-east-1b"
-    }
+  }
 }
