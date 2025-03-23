@@ -16,7 +16,7 @@ variable "server_configs" {
     keyname       = string
     ami           = string
     instance_type = string
-    availability_zone = string 
+    availability_zone = string
   
   }))
   default = {
