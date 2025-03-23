@@ -47,7 +47,7 @@ jobs:
 
           
 
-          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa file.sh  "$username"@"$ip":/opt || 
+          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa file.sh  "$username"@"$ip":/opt |
 
          
 
