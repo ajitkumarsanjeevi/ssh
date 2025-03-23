@@ -14,7 +14,7 @@ variable "server_configs" {
     name          = string
     ami           = string
     keyname       = string
-    ami           = sting
+    ami           = string
     instance_type = string
     availability_zone = string 
   
@@ -22,7 +22,7 @@ variable "server_configs" {
   default = {
     "web_server" = {
       name          = "instance-1"
-      ami           = "ami-12345678"       
+      ami           = "ami-08b5b3a93ed654d19"
       instance_type = "t2.micro"
       key_name       = "remote" 
       availability_zone = "us-east-1a"   
