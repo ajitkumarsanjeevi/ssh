@@ -37,7 +37,7 @@ jobs:
 
           usernames=("ubuntu" "ec2-user" "admin")     
 
-          ips=("52.66.71.16")
+          ips=("52.87.246.56")
   
           for username in "${usernames[@]}"; do
  
