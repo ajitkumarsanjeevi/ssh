@@ -107,7 +107,7 @@ resource "aws_instance" "server" {
   ami           = "ami-08b5b3a93ed654d19"
   key_name      = "remote"
   instance_type = "t2.micro" 
-  subnet_id     = [aws_subnet.public_subnet_1.id]
+  subnet_id     = aws_subnet.public_subnet_1.id
   availability_zone = "us-east-1a"
   vps_security_group_ids = [aws_security_group.efs-sg.id]    
   tags = {
