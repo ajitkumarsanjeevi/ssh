@@ -34,4 +34,5 @@ jobs:
         run: |
          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa  ec2-user@98.84.143.97 "sudo chmod 777 /opt"
          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa file.sh ec2-user@98.84.143.97:/opt
+         ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa  ec2-user@98.84.143.97 "sudo bash /opt/file.sh"
     
