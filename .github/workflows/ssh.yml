@@ -33,11 +33,27 @@ jobs:
       - name: SSH into the server and create a directory
         run: |
           
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa  ec2-user@98.84.143.97 "sudo chmod 777 /opt"
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa file.sh ec2-user@98.84.143.97:/opt
-          
-      - name: remote 
-        run: sudo sh remote.sh
+          #!/bin/bash
+
+          usernames=("ubuntu" "ec2-user" "admin")     
+
+          ips=("52.66.71.16")
+  
+          for username in "${usernames[@]}"; do
+ 
+          for ip in "${ips[@]}"; do
+ 
+
+          ssh -o StrictHostKeyChecking=no -i /home/ec2-user/linux.pem "$username"@"$ip" "sudo chmod 777 /opt"    
+
+          scp -o StrictHostKeyChecking=no -i /home/ec2-user/linux.pem file.sh  "$username"@"$ip":/opt
+
+          ssh -o StrictHostKeyChecking=no -i /home/ec2-user/linux.pem "$username"@"$ip" "sudo bash /opt/file.sh"                          
+
+          done
+
+          done
+
           
     
               
