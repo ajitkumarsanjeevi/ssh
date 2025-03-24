@@ -19,20 +19,18 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Log in to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v1
 
-      - name: create repo
-           run: aws ecr create-repository --repository-name nginx --region us-east-1
-
-      - name: push to ecr
+      - name: ssh
         run: |
+          IPS=$(aws ec2 describe-instances --region $REGION --query "Reservations[].Instances[].[PublicIpAddress]" --output text)
+          fo ip in $IPS; do
+          echo "$ip"
+          done
+
           
-          name="nginx"
-          region="us-east-1"
-          docker build -t $name .
-          docker tag $name:latest 585768173504.dkr.ecr.$region.amazonaws.com/$name:latest 
-          docker push 585768173504.dkr.ecr.$region.amazonaws.com/$name:latest
+        
+
+      
 
           
 
