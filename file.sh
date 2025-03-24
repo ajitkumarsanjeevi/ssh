@@ -1,13 +1,7 @@
 #!/bin/bash 
                                                                             
 
-ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')                                          
-
-path="efs"     
-
-REGION="us-east-1"
-Dns=$(aws efs describe-file-systems --region $REGION --query "FileSystems[0].FileSystemId" --output text)
-efs-region="efs.us-east-1.amazonaws.com"
+ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')                                         
                                    
 
 function_ubuntu(){  
@@ -42,11 +36,11 @@ echo "notfound"
   fi 
 
 
-sudo mkdir /$path
+sudo mkdir /efs
 
-sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $Dns.$efs-region:/ /$path
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-07584ac382a1c5fa2.efs.us-east-1.amazonaws.com:/ /efs
 
-echo "$Dns.$efs-region:/ /$path nfs4 defaults,_netdev 0 0" | sudo tee -a /etc/fstab    
+echo "fs-07584ac382a1c5fa2.efs.us-east-1.amazonaws.com:/ /efs nfs4 defaults,_netdev 0 0" | sudo tee -a /etc/fstab    
 
 
 
