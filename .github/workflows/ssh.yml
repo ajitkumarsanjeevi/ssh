@@ -15,8 +15,18 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: '1.3.0'    
+          terraform_version: '1.3.0'
+
+      - name: fs
+        run: |
         
+         REGION="us-east-1"
+         AZ="us-east-1a"
+         FILE_SYSTEM_ID=$(aws efs describe-file-systems --region $REGION --query "FileSystems[?AvailabilityZoneName=='$AZ'].FileSystemId" --output text)
+
+
+
+      
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
