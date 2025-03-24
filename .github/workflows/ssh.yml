@@ -25,6 +25,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      - name: id
+        run: |
+           FILE_SYSTEM_IDS=$(aws efs describe-file-systems --region "$REGION" --query "FileSystems[*].FileSystemId" --output text)
+           echo "$FILE_SYSTEM_IDS"
+
+
       - name: init
         run: terraform init
 
