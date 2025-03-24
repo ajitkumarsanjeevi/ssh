@@ -30,7 +30,7 @@ jobs:
         
          REGION="us-east-1"
          FILE_SYSTEM_ID=$(aws efs describe-file-systems --region $REGION --query "FileSystems[0].FileSystemId" --output text)
-         echo "$FILE_SYSTEM_ID" 
+         echo "$FILE_SYSTEM_ID.efs.us-east-1.amazonaws.com" 
 
       - name: init
         run: terraform init
