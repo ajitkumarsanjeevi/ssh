@@ -23,7 +23,7 @@ jobs:
       - name: ssh
         run: |
           IPS=$(aws ec2 describe-instances --region us-east-1 --query "Reservations[].Instances[].[PublicIpAddress]" --output text)
-          fo ip in $IPS; do
+          for ip in $IPS; do
           echo "$ip"
           done
 
