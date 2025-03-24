@@ -25,26 +25,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: id
-        run: |
-           FILE_SYSTEM_IDS=$(aws efs describe-file-systems --region "$REGION" --query "FileSystems[*].FileSystemId" --output text)
-           echo "$FILE_SYSTEM_IDS"
-
-
-      - name: init
-        run: terraform init
-
-      - name: plan
-        run: terraform pla
-
-      - name: apply
-        run: terraform apply auto-approve
-
-      - name: destroy
-        run: terraform destroy auto-approve
 
       - name: ssh
-        run: |
+        un: |
             mkdir -p ~/.ssh
             sudo echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
             sudo chmod 600 ~/.ssh/id_rsa
