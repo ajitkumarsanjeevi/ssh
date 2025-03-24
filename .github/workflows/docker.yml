@@ -21,7 +21,9 @@ jobs:
 
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
-      - name: |
+      - name: push to ecr
+        run: |
+      
           docker build -t nginx .
           docker tag nginx:latest 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
           docker push 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
