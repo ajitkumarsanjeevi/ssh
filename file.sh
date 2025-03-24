@@ -34,6 +34,12 @@ echo "notfound"
 
   fi 
 
+sudo mkdir /opt/efs
+
+sudo mount
+
+echo "your text here" | sudo tee -a /etc/fstab
+
 
 
 
