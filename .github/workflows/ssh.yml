@@ -25,25 +25,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: fs
-        run: |
-        
-         REGION="us-east-1"
-         FILE_SYSTEM_ID=$(aws efs describe-file-systems --region $REGION --query "FileSystems[0].FileSystemId" --output text)
-         echo "$FILE_SYSTEM_ID.efs.us-east-1.amazonaws.com" 
-
-      - name: init
-        run: terraform init
-      - name: plan
-        run: terraform plan
-
-      - name: apply
-        run: terraform apply -auto-approve
-
-      - name: destroy
-        run: terraform destroy -auto-approve
-        
-      
       - name: ssh
         run: |
             mkdir -p ~/.ssh
@@ -54,13 +35,14 @@ jobs:
         run: |
           
           set +e
-          usernames=("ubuntu" "ec2-user" "admin")     
+          usernames=("ubuntu" "ec2-user" "admin") 
+          IPS=$(aws ec2 describe-instances --region us-east-1 --query "Reservations[].Instances[].[PublicIpAddress]" --output text)
 
-          ips=("54.80.40.16")
+          
   
           for username in "${usernames[@]}"; do
  
-          for ip in "${ips[@]}"; do
+          for ip in "$ips"; do
  
 
           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" 
