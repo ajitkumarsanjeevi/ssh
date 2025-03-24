@@ -23,11 +23,11 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: create repo
-        run: aws ecr create-repository --repository-name nginx --region us-east-1
+           run: aws ecr create-repository --repository-name nginx --region us-east-1
 
       - name: push to ecr
         run: |
-      
+          
           name="nginx"
           region="us-east-1"
           docker build -t $name .
@@ -35,3 +35,6 @@ jobs:
           docker push 585768173504.dkr.ecr.$region.amazonaws.com/$name:latest
 
           
+
+
+
