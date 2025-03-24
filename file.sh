@@ -5,7 +5,10 @@ ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')
 
 path="efs"     
 
-Dns="fs-0d05ffa37b24f2c35.efs.us-east-1.amazonaws.com"                                   
+REGION="us-east-1"
+AZ="us-east-1a"
+Dns=$(aws efs describe-file-systems --region $REGION --query "FileSystems[?AvailabilityZoneName=='$AZ'].FileSystemId" --output text)
+                                   
 
 function_ubuntu(){  
 
