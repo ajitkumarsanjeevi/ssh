@@ -1,7 +1,11 @@
 #!/bin/bash 
                                                                             
 
-ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')                                         
+ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"') 
+
+path=/efs
+fsid=fs-07584ac382a1c5fa2
+
                                    
 
 function_ubuntu(){  
@@ -38,9 +42,9 @@ echo "notfound"
 
 sudo mkdir /efs
 
-sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-07584ac382a1c5fa2.efs.us-east-1.amazonaws.com:/ /efs
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $fsid.efs.us-east-1.amazonaws.com:/ $path
 
-echo "fs-07584ac382a1c5fa2.efs.us-east-1.amazonaws.com:/ /efs nfs4 defaults,_netdev 0 0" | sudo tee -a /etc/fstab    
+echo "$fsid.efs.us-east-1.amazonaws.com:/ $path nfs4 defaults,_netdev 0 0" | sudo tee -a /etc/fstab    
 
 
 
