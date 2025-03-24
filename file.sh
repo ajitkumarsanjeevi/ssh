@@ -6,6 +6,7 @@ ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')
 path="efs"     
 
 REGION="us-east-1"
+Dns=$(aws efs describe-file-systems --region $REGION --query "FileSystems[0].FileSystemId" --output text)
                                    
 
 function_ubuntu(){  
