@@ -21,6 +21,10 @@ jobs:
 
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
+
+      - name: create repo
+        run: aws ecr create-repository --repository-name nginx --region us-east-1
+
       - name: push to ecr
         run: |
       
