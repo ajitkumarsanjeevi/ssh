@@ -4,7 +4,7 @@
 ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"') 
 
 path=/efs
-fsid=fs-07584ac382a1c5fa2
+fsid=$(                                                )
 
                                    
 
