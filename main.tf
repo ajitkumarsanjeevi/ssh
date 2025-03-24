@@ -109,7 +109,7 @@ resource "aws_instance" "ec2_instances" {
   instance_type = each.value["instance_type"]
   key_name      = each.value["key_name"]
   subnet_id     = aws_subnet.public_subnet_1.id
-  availability_zone = each.value.["availability_zone]
+  availability_zone = each.value.["availability_zone"]
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
 
   tags = {
