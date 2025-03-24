@@ -6,8 +6,6 @@ ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')
 path="efs"     
 
 REGION="us-east-1"
-AZ="us-east-1a"
-Dns=$(aws efs describe-file-systems --region $REGION --query "FileSystems[?AvailabilityZoneName=='$AZ'].FileSystemId" --output text)
                                    
 
 function_ubuntu(){  
@@ -44,9 +42,9 @@ echo "notfound"
 
 sudo mkdir /$path
 
-sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $Dns:/ /$path
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $Dns.efs.us-east-1.amazonaws.com:/ /$path
 
-echo "$Dns:/ /$path nfs4 defaults,_netdev 0 0" | sudo tee -a /etc/fstab    
+echo "$Dns.efs.us-east-1.amazonaws.com:/ /$path nfs4 defaults,_netdev 0 0" | sudo tee -a /etc/fstab    
 
 
 
