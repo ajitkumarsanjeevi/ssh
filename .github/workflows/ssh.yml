@@ -43,9 +43,9 @@ jobs:
  
           for ip in "${ips[@]}"; do
  
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"  &> /dev/null
-          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa file.sh  "$username"@"$ip":/opt  &> /dev/null           
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/file.sh"  &> /dev/null  
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"  
+          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa file.sh  "$username"@"$ip":/opt         
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/file.sh"   
           
           done
           done
