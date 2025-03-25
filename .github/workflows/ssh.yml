@@ -40,7 +40,7 @@ jobs:
           set +e
           usernames=("ubuntu" "ec2-user" "admin") 
           ips=($(aws ec2 describe-instances --region us-east-1 --query "Reervations[].Instances[].[PublicIpAddress]" --output text))
-          scripts=("file.sh" "abc.sh")
+          script="file.sh"
           
           for username in "${usernames[@]}"; do
  
