@@ -39,9 +39,11 @@ jobs:
           
           set +e
           
-          usernames=("ubuntu" "ec2-user" "admin") 
+          region="us-east-1"
 
           script="file.sh"
+          
+          usernames=("ubuntu" "ec2-user" "admin") 
 
           region="us-east-1"
           
