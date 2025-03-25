@@ -60,7 +60,11 @@ jobs:
           done
 
           }
-          ssh file.sh 
+          scripts=("file.sh")
+          for script in "${scripts[@]}; do
+          ssh "$script"
+          done 
+          
          
           
           
