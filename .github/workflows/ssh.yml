@@ -6,7 +6,7 @@ on:
       - main  
 
 jobs: 
-  job1:  
+  job1: 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -50,7 +50,7 @@ jobs:
           
           scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa file.sh  "$username"@"$ip":/opt  
 
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash file.sh" 
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/file.sh" 
           
           done
          
