@@ -46,13 +46,12 @@ jobs:
  
           for ip in "${ips[@]}"; do
 
-          
-
- 
           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"    
+          
           scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa file.sh  "$username"@"$ip":/opt  
           
           done
+         
           done
         
           
@@ -62,5 +61,5 @@ jobs:
 
           
     
-              
+               
   
