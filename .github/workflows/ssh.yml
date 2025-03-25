@@ -25,11 +25,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.secretkey }}
           aws-region: us-east-1
 
-       -name: init
+      - name: init
         run: terraform init
 
       - name: plan
-        run: terraform pla
+        run: terraform plan
 
       - name: apply -auto-approve  
 
