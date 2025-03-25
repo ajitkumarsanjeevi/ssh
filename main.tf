@@ -119,19 +119,4 @@ resource "aws_instance" "ec2_instances" {
 
 
 
-resource "aws_efs_file_system" "example" {
-  creation_token = "example-token"  
-  performance_mode = "generalPurpose"  
-}
 
-resource "aws_efs_mount_target" "mt1" {
-  file_system_id = aws_efs_file_system.example.id
-  subnet_id      = aws_subnet.public_subnet_1.id 
-  security_groups = [aws_security_group.efs-sg.id] 
-}
-
-resource "aws_efs_mount_target" "mt2" {
-  file_system_id = aws_efs_file_system.example.id
-  subnet_id      = aws_subnet.public_subnet_2.id
-  security_groups = [aws_security_group.efs-sg.id]  
-} 
