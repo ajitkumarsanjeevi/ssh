@@ -43,7 +43,7 @@ jobs:
 
           script="abc.sh"
           
-          usernames=("ubuntu" "ec2-user" "admin") 
+          usernames=("ec2-user") 
           
           ips=("44.202.103.180")
           
