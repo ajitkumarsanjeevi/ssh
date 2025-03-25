@@ -2,8 +2,8 @@
                                                                             
   
 ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"') 
-path=/efs
-fsid=fs-008840d13b2ae3890.efs.us-east-1.amazonaws.com
+path="/efs"
+fsid="fs-008840d13b2ae3890.efs.us-east-1.amazonaws.com"
                                                
 function_ubuntu(){   
 
