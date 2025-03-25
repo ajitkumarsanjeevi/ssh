@@ -55,34 +55,13 @@ jobs:
 
           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/$script"
           
-          
-          
-
-          
-
-          
-          
           done
          
           done
 
           done
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.accesskey }}
-          aws-secret-access-key: ${{ secrets.secretkey }}
-          aws-region: us-east-1
-
-      - name: cli
-        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/file.sh"
-          
-
-          
-
-  
-        
+      
           
           
 
