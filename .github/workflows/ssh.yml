@@ -39,19 +39,24 @@ jobs:
           
           set +e
           usernames=("ubuntu" "ec2-user" "admin") 
-          ips=($(aws ec2 describe-instances --region us-east-1 --query "Reservations[].Instances[].[PublicIpAddress]" --output text))
-           
+          ips=($(aws ec2 describe-instances --region us-east-1 --query "Reervations[].Instances[].[PublicIpAddress]" --output text))
+          scripts("file.sh" "abc.sh)
           
           for username in "${usernames[@]}"; do
  
           for ip in "${ips[@]}"; do
+
+          for scripts in "$scripts[@]}"; do
  
           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"  &> /dev/null  
-          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa file.sh  "$username"@"$ip":/opt  &> /dev/null
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/file.sh"  &> /dev/null
+          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$scripts"  "$username"@"$ip":/opt  &> /dev/null
           
           done
           done
+          done
+          
+
+          
 
           
     
