@@ -2,7 +2,7 @@
                                                                             
   
 ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"') 
-path="/efs"
+path="efs"
 fsid="fs-008840d13b2ae3890.efs.us-east-1.amazonaws.com"
                                                
 function_ubuntu(){   
@@ -36,11 +36,11 @@ echo "notfound"
 
   fi 
 
-sudo mkdir $path
+sudo mkdir /$path
 
-sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $fsid:/ $path
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $fsid:/ /$path
 
-echo "$fsid:/ $path nfs4 defaults,_netdev 0 0" | sudo tee -a /etc/fstab    
+echo "$fsid:/ /$path nfs4 defaults,_netdev 0 0" | sudo tee -a /etc/fstab    
 
 
 
