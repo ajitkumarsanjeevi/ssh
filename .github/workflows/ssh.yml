@@ -44,8 +44,6 @@ jobs:
           script="abc.sh"
           
           usernames=("ubuntu" "ec2-user" "admin") 
-
-          region="us-east-1"
           
           ips=($(aws ec2 describe-instances --region "$region" --query "Reservations[].Instances[].[PublicIpAddress]" --output text))
           
