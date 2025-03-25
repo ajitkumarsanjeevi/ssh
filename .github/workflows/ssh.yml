@@ -31,7 +31,7 @@ jobs:
       - name: plan
         run: terraform plan
 
-      - name: apply -auto-approve  
+      - name: terraform apply -auto-approve  
 
 
       - name: ssh
