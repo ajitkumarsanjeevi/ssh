@@ -28,9 +28,9 @@ jobs:
 
       - name: ssh
         run: |
-            mkdir -p ~/.ssh
-            sudo echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
-            sudo chmod 600 ~/.ssh/id_rsa
+            sudo mkdir -p ~/.ssh
+            echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
+            chmod 600 ~/.ssh/id_rsa
 
       - name: SSH into the server and create a directory
         run: |
