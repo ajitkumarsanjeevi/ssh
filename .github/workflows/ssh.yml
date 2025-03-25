@@ -41,7 +41,7 @@ jobs:
           
           region="us-east-1"
 
-          script="file.sh"
+          script="abc.sh"
           
           usernames=("ubuntu" "ec2-user" "admin") 
 
