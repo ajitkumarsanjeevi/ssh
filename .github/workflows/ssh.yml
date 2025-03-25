@@ -53,6 +53,13 @@ jobs:
           done
          
           done
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: list
+        run: aws s3 ls
+          
         
           
           
