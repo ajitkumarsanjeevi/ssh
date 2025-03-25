@@ -57,6 +57,13 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.accesskey }}
+          aws-secret-access-key: ${{ secrets.secretkey }}
+          aws-region: us-east-1
+  
       - name: list
         run: aws s3 ls
           
