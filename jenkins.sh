@@ -1,7 +1,7 @@
 
 ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')   
 
-if jenkins --version; then
+if jenkins --version &> /dev/null; then
 
 echo "jenkins installed"
 
