@@ -30,67 +30,45 @@ jobs:
           
           ips=($(aws ec2 describe-instances --region us-east-1 --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
           
-          
+          packages(){
           for username in "${usernames[@]}"; do
  
           for ip in "${ips[@]}"; do
 
           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null 
 
-          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$script"  "$username"@"$ip":/opt &> /dev/null 
+          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt &> /dev/null 
 
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/$script" &> /dev/null                           
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/$1" &> /dev/null                           
           
           done
          
           done
+
+          }
+
+          scripts=("abc.sh" "mkfl.sh")
+          for script in  "${scripts[@]}"; do
+          packages "$script"
+          done
+          
+          
+          
+          
+           
+
+          
+          
     
             
 
       
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.accesskey }}
-          aws-secret-access-key: ${{ secrets.secretkey }}
-          aws-region: us-east-1
+     
 
       
 
 
-      - name: ssh
-        run: |
-            mkdir -p ~/.ssh  
-            echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
-            chmod 600 ~/.ssh/id_rsa
-
-      - name: SSH into the server and create a directory
-        run: |
-          
-          set +e
-          
-        
-
-          script="abc.sh"
-          
-          usernames=("ec2-user") 
-          
-          ips=("44.202.103.180")
-          
-          
-          for username in "${usernames[@]}"; do
- 
-          for ip in "${ips[@]}"; do
-
-          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$script"  "$username"@"$ip":/opt 
-
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/$script" 
-          
-          done
-         
-          done
-
-          
+      
 
           
         
