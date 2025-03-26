@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# Variables
 
-ROLE_NAME="s3fullaccess"
+ROLE_NAME="ec2fullaccess"
 
 INSTANCE_PROFILE_NAME="myinstanceprofile"
  
-s3_fullaccess() {   
+Ec2_fullaccess() {   
 
 echo "Creating IAM role with S3 full access..."
 
@@ -35,4 +34,9 @@ aws ec2 associate-iam-instance-profile \
     --iam-instance-profile Name=$INSTANCE_PROFILE_NAME
 
 }
-s3_fullaccess "i-0130b7df38748b5a0" 
+instanceids=$()
+for instanceid in $instanceids; do
+Ec2_fullaccess $instanceid
+done
+
+
