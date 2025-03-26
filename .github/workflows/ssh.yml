@@ -115,7 +115,7 @@ jobs:
 
           }
 
-          scripts=("jenkins.sh" )
+          scripts=("awscli.sh" )
           for script in  "${scripts[@]}"; do
           packages "$script"
           done
