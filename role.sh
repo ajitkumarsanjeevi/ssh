@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set +x
 
 ROLE_NAME="s3fullaccess"
 
