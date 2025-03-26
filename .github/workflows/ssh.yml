@@ -28,6 +28,7 @@ jobs:
 
       - name: attachrole
         run: sh role.sh
+        continue-on-error: true
 
       - name: ssh
         run: |
