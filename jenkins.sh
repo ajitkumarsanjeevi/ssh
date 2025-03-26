@@ -1,11 +1,9 @@
 
 ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')   
 
-if jenkins --version &> /dev/null
+if jenkins --version; then &> /dev/null
 
 echo "jenkins installed"
-
-
 
 else
 echo "installing jenkins"
@@ -21,12 +19,6 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
 sudo apt-get update -y
 sudo apt-get install jenkins -y
 }  
-
-
-jenkins_redhat(){
-
-
-}
 
 if [ "$ID" = "ubuntu" ] || [ "$ID" = "debian" ]; then          
 
