@@ -8,6 +8,8 @@ on:
 jobs: 
   job1: 
     runs-on: ubuntu-latest
+    env:
+      REGION: "us-east-1"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -22,7 +24,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: "$REGION"
 
       - name: ssh
         run: |
@@ -35,11 +37,11 @@ jobs:
           
           set +e
           
-          region="us-east-1"
+          
           
           usernames=("ubuntu" "ec2-user" "admin")   
           
-          ips=($(aws ec2 describe-instances --region "$region" --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
+          ips=($(aws ec2 describe-instances --region "$REGION" --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
           
           packages(){
           for username in "${usernames[@]}"; do
