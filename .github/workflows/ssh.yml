@@ -24,7 +24,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: SSH into the server and create a directory
+      - name: SSH into the server and create a directory 
         run: |                                            
           
           set +e
