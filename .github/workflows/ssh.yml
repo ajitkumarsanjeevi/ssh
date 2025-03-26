@@ -59,10 +59,52 @@ jobs:
 
           }
 
-          scripts=("jenkins.sh" "awscli.sh")
+          scripts=("jenkins.sh" )
           for script in  "${scripts[@]}"; do
           packages "$script"
           done
+
+
+  job2: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+
+      - name: SSH into the server and create a directory 
+        run: |                                            
+          
+          set +e
+          
+          
+          
+          usernames=("ubuntu" "ec2-user" "admin")   
+          
+          ips=($(aws ec2 describe-instances --region ${{ env.AWS_REGION }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
+          
+          packages(){
+          for username in "${usernames[@]}"; do
+ 
+          for ip in "${ips[@]}"; do
+
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" 
+
+          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt 
+
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/$1"                            
+          
+          done
+         
+          done
+
+          }
+
+          scripts=("awscli.sh" )
+          for script in  "${scripts[@]}"; do
+          packages "$script"
+          done
+               
           
           
           
