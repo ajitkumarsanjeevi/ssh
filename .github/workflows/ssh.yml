@@ -115,73 +115,11 @@ jobs:
 
           }
 
-          scripts=("awscli.sh" )
+          scripts=("jenkins.sh" )
           for script in  "${scripts[@]}"; do
           packages "$script"
           done
-               
-          
-  job3: 
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
-
-      - name: ssh
-        run: |
-            mkdir -p ~/.ssh  
-            echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
-            chmod 600 ~/.ssh/id_rsa    
-
-        
-
-
-      - name: SSH into the server and create a directory 
-        run: |                                            
-          
-          set +e
-          
-          
-          
-          usernames=("ubuntu" "ec2-user" "admin")   
-          
-          ips=($(aws ec2 describe-instances --region ${{ env.AWS_REGION }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
-          
-          packages(){
-          for username in "${usernames[@]}"; do
- 
-          for ip in "${ips[@]}"; do
-
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" 
-
-          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt 
-
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/$1"                            
-          
-          done
-         
-          done
-
-          }
-
-          scripts=("awscli.sh" )
-          for script in  "${scripts[@]}"; do
-          packages "$script"
-          done
-                 
-          
-          
-           
-
-          
-          
+   
     
             
 
