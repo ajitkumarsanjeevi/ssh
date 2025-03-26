@@ -23,7 +23,9 @@ jobs:
         run: |
          if git --version &> /dev/null; then
 
-         echo "jenkins installed"   
+         echo "jenkins installed"  
+
+         fi
 
       - name: init
         run: terraform int
