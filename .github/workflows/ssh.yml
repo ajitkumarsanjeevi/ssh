@@ -42,12 +42,12 @@ jobs:
           
           
           key_path="~/.ssh/id_rsa"
-          script="jenkins.sh"
+          script="awscli.sh"
           usernames=("ubuntu" "ec2-user" "admin")   
           
           ips=($(aws ec2 describe-instances --region ${{ env.AWS_REGION }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
           
-          packages(){
+          
           for username in "${usernames[@]}"; do
  
           for ip in "${ips[@]}"; do
@@ -62,7 +62,10 @@ jobs:
          
           done
 
-          }
+      - name: ls
+        run: aws s3 ls
+
+          
 
           
           
