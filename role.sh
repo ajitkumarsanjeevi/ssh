@@ -34,7 +34,7 @@ aws ec2 associate-iam-instance-profile \
     --iam-instance-profile Name=$INSTANCE_PROFILE_NAME
 
 }
-instanceids=$()
+instanceids=$(aws ec2 describe-instances --region us-east-1 --query 'Reservations[*].Instances[*].InstanceId' --output text)
 for instanceid in $instanceids; do
 Ec2_fullaccess $instanceid
 done
