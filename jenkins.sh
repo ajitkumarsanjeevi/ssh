@@ -20,7 +20,13 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update -y
 sudo apt-get install jenkins -y
-}      
+}  
+
+
+jenkins_redhat(){
+
+
+}
 
 if [ "$ID" = "ubuntu" ] || [ "$ID" = "debian" ]; then          
 
@@ -29,7 +35,7 @@ if [ "$ID" = "ubuntu" ] || [ "$ID" = "debian" ]; then
 
 elif [ "$ID" = "rhel" ] || [ "$ID" = "amzn" ]; then   
                                                                    
-  function_redhat                                                                               
+  jenkins_rehat                                                                             
 
 else
 
@@ -39,13 +45,6 @@ fi
 
  
 fi
-
-
-
-
-
-
-
 
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
