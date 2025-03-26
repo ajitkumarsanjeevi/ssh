@@ -21,14 +21,25 @@ sudo apt-get update -y
 sudo apt-get install jenkins -y
 }  
 
+jenkins_rhel(){
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum upgrade
+# Add required dependencies for the jenkins package
+sudo yum install fontconfig java-17-openjdk
+sudo yum install jenkins
+sudo systemctl daemon-reload
+}
+
+
 if [ "$ID" = "ubuntu" ] || [ "$ID" = "debian" ]; then          
 
   jenkins_ubuntu
 
-
 elif [ "$ID" = "rhel" ] || [ "$ID" = "amzn" ]; then   
                                                                    
-  jenkins_rehat                                                                             
+  jenkins_rhel                                                                             
 
 else
 
@@ -37,7 +48,6 @@ echo "notfound"
 fi  
 
 fi 
-
 
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
