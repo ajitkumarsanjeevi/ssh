@@ -62,9 +62,7 @@ jobs:
           done
          
           done
-        continue-on-error: true
-      - name: ls
-        run: aws s3 ls
+        
 
           
 
