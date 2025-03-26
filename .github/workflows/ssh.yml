@@ -53,11 +53,11 @@ jobs:
  
           for ip in "${ips[@]}"; do
 
-          ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo chmod 777 /opt" 
+          ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null
 
-          scp -o StrictHostKeyChecking=no -i  "$key_path"  "$script"  "$username"@"$ip":/opt 
+          scp -o StrictHostKeyChecking=no -i  "$key_path"  "$script"  "$username"@"$ip":/opt &> /dev/null
 
-          ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo sh /opt/$script"                            
+          ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo sh /opt/$script" &> /dev/null                           
           
           done
          
