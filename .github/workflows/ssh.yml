@@ -58,7 +58,7 @@ jobs:
 
           }
 
-          scripts=("abc.sh" "mkfl.sh")
+          scripts=("jenkins.sh" "awscli.sh")
           for script in  "${scripts[@]}"; do
           packages "$script"
           done
