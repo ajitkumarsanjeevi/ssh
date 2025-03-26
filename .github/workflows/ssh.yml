@@ -5,7 +5,7 @@ on:
     branches:
       - main  
 env:
-  REGION: "us-east-1"
+  AWS_REGION: 'us-east-1'
 jobs: 
   job1: 
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: "$REGION"
+          aws-region: "$AWS_REGION"
 
       - name: ssh
         run: |
@@ -40,7 +40,7 @@ jobs:
           
           usernames=("ubuntu" "ec2-user" "admin")   
           
-          ips=($(aws ec2 describe-instances --region "$REGION" --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
+          ips=($(aws ec2 describe-instances --region "$AWS_REGION" --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
           
           packages(){
           for username in "${usernames[@]}"; do
