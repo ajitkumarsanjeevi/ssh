@@ -4,12 +4,11 @@ on:
   push:   
     branches:
       - main  
-
+env:
+  REGION: "us-east-1"
 jobs: 
   job1: 
     runs-on: ubuntu-latest
-    env:
-      REGION: "us-east-1"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
