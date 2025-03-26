@@ -27,7 +27,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: attachrole
-        run: sh aws.sh
+        run: sh role.sh
 
       - name: ssh
         run: |
