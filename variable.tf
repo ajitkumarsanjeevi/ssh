@@ -1,3 +1,8 @@
+
+variable "is_enabled"
+ type = bool
+ default = true
+
 variable "ingress-rules" {
   type = list(number)
   default = [22,8080,80,443,2049]
