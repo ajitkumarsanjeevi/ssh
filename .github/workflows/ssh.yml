@@ -26,6 +26,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: init
+        run: terraform init
+
+      - name: plan
+        run: terraform plan
+
+      - name: apply -auto-approve
+        run: terraform apply
+
   
       - name: ssh
         run: |
@@ -40,7 +49,7 @@ jobs:
           
           
           key_path="~/.ssh/id_rsa"
-          usernames=("ubuntu" "ec2-user" "admin")   
+          usernames=("ubuntu "ec2-user" "admin")   
           
           ips=($(aws ec2 describe-instances --region ${{ env.AWS_REGION }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
           
