@@ -60,7 +60,7 @@ jobs:
 
           scripts=("jenkins.sh")
           fo script in "${scripts[@]}"; do
-          package "$script
+          package "$script"
           done
 
           
