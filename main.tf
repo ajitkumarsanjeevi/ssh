@@ -5,7 +5,7 @@ region = "us-east-1
 
 resource "aws_vpc" "main" {                            
   cidr_block = "10.0.0.0/16"
-  enable_dns_support   = true
+  enable_dns_support   = var.is_enable
   enable_dns_hostnames = var.is_enabled   
 
   tags = {
@@ -16,7 +16,7 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "public_subnet_1" {   
   vpc_id                  = aws_vpc.main.id      
   cidr_block              = "10.0.1.0/24"
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = var.is_enabled
   availability_zone       = "us-east-1a"  
 
   tags = {
