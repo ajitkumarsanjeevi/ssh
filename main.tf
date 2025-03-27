@@ -103,17 +103,17 @@ resource "aws_security_group" "efs-sg" {
 
 
 resource "aws_instance" "ec2_instances" {
-  for_each = var.ec2_instance_config
+  count = length(instances)
 
-  ami           = each.value["ami"]
-  instance_type = each.value["instance_type"]
-  key_name      = each.value["key_name"]
+  ami           = "    "
+  instance_type = "    "
+  key_name      = "   "
   subnet_id     = aws_subnet.public_subnet_1.id
-  availability_zone = each.value["availability_zone"]
+  availability_zone = 
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
 
   tags = {
-    Name = each.key
+    Name = var.instances[count.index]
   }
 }
 
