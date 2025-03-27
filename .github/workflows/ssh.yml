@@ -38,6 +38,7 @@ jobs:
 
       - name: script
         run: sh role.sh
+        continue-on-error: true
 
   
       - name: ssh
