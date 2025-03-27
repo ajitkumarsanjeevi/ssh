@@ -36,9 +36,6 @@ jobs:
         run: terraform apply -auto-approve
 
 
-      - name: destory
-        run: terraform destroy -auto-approve
-
       - name: script
         run: sh role.sh
 
