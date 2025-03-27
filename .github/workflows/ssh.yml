@@ -37,7 +37,7 @@ jobs:
 
 
       - name: destory
-        run: terraform destroy -auto-aprove
+        run: terraform destroy -auto-approve
 
   
       - name: ssh
