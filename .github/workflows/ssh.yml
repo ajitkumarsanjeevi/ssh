@@ -72,7 +72,7 @@ jobs:
            }
           
           scripts=("awscli.sh")
-          fo script in "${scripts[@]}"; do
+          for script in "${scripts[@]}"; do
           package "$script"
           done
 
