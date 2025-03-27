@@ -2,6 +2,8 @@
 
 ROLE_NAME="s3fullaccess"
 
+region="us-east-1"
+
 INSTANCE_PROFILE_NAME="s3instanceprofile"
  
 s3_fullaccess() {   
@@ -33,7 +35,7 @@ aws ec2 associate-iam-instance-profile \
     --iam-instance-profile Name=$INSTANCE_PROFILE_NAME
 
 }
-instanceids=$(aws ec2 describe-instances --region us-east-1 --query 'Reservations[*].Instances[*].InstanceId' --output text)
+instanceids=$(aws ec2 describe-instances --region $region --query 'Reservations[*].Instances[*].InstanceId' --output text)
 for instanceid in $instanceids; do
 s3_fullaccess $instanceid
 done
