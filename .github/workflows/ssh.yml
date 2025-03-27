@@ -69,7 +69,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo sh /opt/$1" &> /dev/null                           
           done
         
-           }
+          }  
           
           scripts=("awscli.sh")
           for script in "${scripts[@]}"; do
