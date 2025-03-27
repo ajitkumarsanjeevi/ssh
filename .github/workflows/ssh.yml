@@ -54,7 +54,7 @@ jobs:
           
           
           key_path="~/.ssh/id_rsa"
-          usernames=("ubuntu "ec2-user" "admin")   
+          usernames=("ubuntu" "ec2-user" "admin")   
           
           ips=($(aws ec2 describe-instances --region ${{ env.AWS_REGION }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
           
@@ -72,7 +72,7 @@ jobs:
           done
           }
 
-          scripts=("jenkins.sh")
+          scripts=("awscli.sh")
           fo script in "${scripts[@]}"; do
           package "$script"
           done
