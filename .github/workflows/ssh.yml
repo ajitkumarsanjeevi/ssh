@@ -39,6 +39,9 @@ jobs:
       - name: destory
         run: terraform destroy -auto-approve
 
+      - name: script
+        run: sh role.sh
+
   
       - name: ssh
         run: |
