@@ -109,7 +109,7 @@ resource "aws_instance" "ec2_instances" {
   instance_type = "t2.micro"
   key_name      = "remote"
   subnet_id     = aws_subnet.public_subnet_1.id
-  availability_zone = "us-east-1a"
+  availability_zone = "us-east-1"
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
 
   tags = {
