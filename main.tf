@@ -17,7 +17,7 @@ resource "aws_subnet" "public_subnet_1" {
   vpc_id                  = aws_vpc.main.id      
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = var.is_enabled
-  availability_zone       = "us-east-1a"  
+  availability_zone       = var.availability_zones[0]
 
   tags = {
     Name = "PublicSubnet1"
@@ -28,7 +28,7 @@ resource "aws_subnet" "public_subnet_2" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.2.0/24"
   map_public_ip_on_launch = var.is-enabled
-  availability_zone       = "us-east-1b"
+  availability_zone       = var.availability_zones[1]
 
   tags = {
     Name = "PublicSubnet2"
@@ -109,7 +109,7 @@ resource "aws_instance" "ec2_instances" {
   instance_type = "t2.micro"
   key_name      = "remote"
   subnet_id     = aws_subnet.public_subnet_1.id
-  availability_zone = "us-east-1a"
+  availability_zone = var.availability_zones[0]
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
 
   tags = {
