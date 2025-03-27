@@ -9,6 +9,6 @@ variable "egress-rules" {
 }
 variable "instances" {
   type = list(string)
-  default = ["instance-1","instance-2", "instance-3"]
+  default = ["instance-1"]
 }
   
