@@ -26,10 +26,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: attachrole
-        run: sh role.sh
-        continue-on-error: true
-
+  
       - name: ssh
         run: |
             mkdir -p ~/.ssh  
@@ -43,12 +40,11 @@ jobs:
           
           
           key_path="~/.ssh/id_rsa"
-          script="awscli.sh"
           usernames=("ubuntu" "ec2-user" "admin")   
           
           ips=($(aws ec2 describe-instances --region ${{ env.AWS_REGION }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
           
-          
+          package(){
           for username in "${usernames[@]}"; do
  
           for ip in "${ips[@]}"; do
@@ -60,8 +56,17 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo sh /opt/$script" &> /dev/null                           
           
           done
-         
+          }
+
+          scripts=("jenkins.sh")
+          fo script in "${scripts[@]}"; do
+
+          package "$script
+
           done
+
+          
+          
         
 
           
