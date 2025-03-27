@@ -3,6 +3,10 @@ variable "is_enabled"
  type = bool
  default = true
 
+variable "availability_zones"
+type = list(string)
+default = ["us-east-1a", "us-east-1b", "us-east-1c"]
+
 variable "ingress-rules" {
   type = list(number)
   default = [22,8080,80,443,2049]
