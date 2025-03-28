@@ -35,8 +35,7 @@ jobs:
             chmod 600 ~/.ssh/id_rsa    
             fi
 
-      - name: ansible
-        run: ansible-playbook ansible.yml
+      
                                      
           
       - name: script
