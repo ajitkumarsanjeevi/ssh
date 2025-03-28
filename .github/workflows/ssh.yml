@@ -5,7 +5,7 @@ on:
     branches:
       - main  
 env:
-  AWS_REGION: 'us-east-1'
+  AWS_REGION: 'us-east-1' 
 jobs: 
   job1: 
     runs-on: ubuntu-latest
@@ -64,7 +64,7 @@ jobs:
 
       - name: SSH into the server and create a directory 
         run: |
-          sudo chmod 777 ./scripts/jenkin.sh
+          sudo chmod 777 ./scripts/awsclirm.sh
           ./scripts/awsclirm.sh                                           
                   
           
