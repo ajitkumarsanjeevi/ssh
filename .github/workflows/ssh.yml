@@ -63,9 +63,34 @@ jobs:
       
             done
 
-            scripts=("awscli.sh" "jenkins.sh")
-            for script in "${scripts[@]}"; do
-            package "$script
+               items=("awscli" "banana" "cherry" "date" "elderberry")
+
+              
+              for item in "${items[@]}"; do
+              case $item in
+              awscli)
+              package awscli.sh
+               ;;
+              banana)
+             
+              echo "This is a banana."
+              ;;
+              cherry)
+             
+             echo "This is a cherry."
+             ;;
+             date)
+            
+            echo "This is a date."
+            ;;
+            elderberry)
+            
+            echo "This is an elderberry."
+            ;;
+            *)
+            echo "Unknown fruit."
+             ;;
+            esac
             done
 
                      
