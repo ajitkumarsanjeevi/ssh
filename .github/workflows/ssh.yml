@@ -41,7 +41,7 @@ jobs:
           
             
 
-            script="jenkins.sh"
+            package(){
           
             usernames=("ubuntu" "ec2-user" "admin")   
           
@@ -62,6 +62,13 @@ jobs:
             done
       
             done
+
+            scripts=("awscli.sh" "jenkins.sh")
+            for script in "${scripts[@]}"; do
+            package "$script
+            done
+
+                     
 
 
 
