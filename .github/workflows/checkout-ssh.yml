@@ -2,7 +2,7 @@
 name: 'Setup SSH and AWS Credentials'
 
 on:
-  workflow_call: # Makes this workflow reusable
+  workflow_call: 
 jobs:
   setup:
     runs-on: ubuntu-latest
