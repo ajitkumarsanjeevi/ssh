@@ -20,7 +20,4 @@ done
         
 }  
           
-scripts=("awscli.sh")
-for script in "${scripts[@]}"; do
-package "$script"
-done
+package awscli.sh
