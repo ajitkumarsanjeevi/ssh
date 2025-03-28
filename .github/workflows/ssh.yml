@@ -12,7 +12,7 @@ jobs:
 
   job1:
     runs-on: ubuntu-latest
-    needs: checkout-repo  # Ensures job1 depends on the checkout-repo job
+    needs: checkout-repo  
     steps:
       - name: Use checked-out code
         run: |
