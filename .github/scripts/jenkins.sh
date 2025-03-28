@@ -20,7 +20,7 @@ done
         
 }  
           
-scripts=("awscli.sh")
+scripts=("jenkins.sh")
 for script in "${scripts[@]}"; do
 package "$script"
 done
