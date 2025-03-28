@@ -62,11 +62,13 @@ jobs:
             done
       
             done
+            }
 
-               items=("awscli" "banana" "cherry" "date" "elderberry")
+               
 
               
-              for item in "${items[@]}"; do
+              item="awscli"
+              
               case $item in
               awscli)
               package awscli.sh
