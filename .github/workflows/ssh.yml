@@ -80,7 +80,7 @@ jobs:
           
                   
             for username in "${usernames[@]}"; do
- 
+  
             for ip in "${ips[@]}"; do
 
             scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  nginx.yml  "$username"@"$ip":/opt &> /dev/null 
