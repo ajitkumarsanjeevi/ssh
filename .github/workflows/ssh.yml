@@ -30,8 +30,8 @@ jobs:
           aws-region: us-east-1   
       - name: Use checked-out code 
         run: |
-          sudo chmod 777 ./scripts/jenkin.sh
-          .github/scripts/awsclirm.sh                                          
+          sudo chmod 777 ./scripts/awsclirm.sh
+          ./scripts/awsclirm.sh                                          
           
           
                           
