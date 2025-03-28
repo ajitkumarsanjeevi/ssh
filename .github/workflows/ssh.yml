@@ -22,9 +22,14 @@ jobs:
           
       - name: ssh
         run: |
+
+            if [ -f ~/.ssh/id_rsa ]; then
+            echo "File exists"
+            else
             mkdir -p ~/.ssh  
             echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
-            chmod 600 ~/.ssh/id_rsa    
+            chmod 600 ~/.ssh/id_rsa
+            fi
 
       - name: SSH into the server and create a directory 
         run: |
@@ -48,9 +53,14 @@ jobs:
           
       - name: ssh
         run: |
+
+            if [ -f ~/.ssh/id_rsa ]; then
+            echo "File exists"
+            else
             mkdir -p ~/.ssh  
             echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
-            chmod 600 ~/.ssh/id_rsa    
+            chmod 600 ~/.ssh/id_rsa
+            fi
 
       - name: SSH into the server and create a directory 
         run: |
