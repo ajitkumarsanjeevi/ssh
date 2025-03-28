@@ -20,7 +20,7 @@ done
         
 }  
           
-my_var="jenkis.sh"
+my_var="awscli.sh"
 
 # Using case to check the value of my_var
 case $my_var in
@@ -28,8 +28,8 @@ case $my_var in
         package Jenkins.sh
        ;;
     
-   "awscli")
-        echo "This is a banana."
+   "awscli.sh")
+        package awscli.sh
         ;;
     
      "cherry")
