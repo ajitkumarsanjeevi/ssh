@@ -41,8 +41,8 @@ jobs:
           
             
 
-            package(){
-          
+            
+            script="awscli.sh" 
             usernames=("ubuntu" "ec2-user" "admin")   
           
             ips=($(aws ec2 describe-instances --region ${{ env.Region }}  --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
@@ -62,39 +62,11 @@ jobs:
             done
       
             done
-            }
+            
 
                
 
-              #list of packages#
-              item="awscli"
               
-              case $item in
-              awscli)
-              package awscli.sh
-               ;;
-              banana)
-             
-              echo "This is a banana."
-              ;;
-              cherry)
-             
-             echo "This is a cherry."
-             ;;
-             date)
-            
-            echo "This is a date."
-            ;;
-            elderberry)
-            
-            echo "This is an elderberry."
-            ;;
-            *)
-            echo "Unknown fruit."
-             ;;
-            esac
-            done
-
                      
 
 
