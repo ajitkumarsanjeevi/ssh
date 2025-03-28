@@ -27,7 +27,7 @@ jobs:
             chmod 600 ~/.ssh/id_rsa    
 
       - name: SSH into the server and create a directory 
-        run: ./github/scripts/jenkins.sh                                          
+        run: ssh/.github/scripts/jenkins.sh                                          
           
           
                           
