@@ -20,5 +20,5 @@ done
         
 }  
           
-package jenkin.sh
+package jenkins.sh
 
