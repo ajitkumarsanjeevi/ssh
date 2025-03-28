@@ -57,15 +57,46 @@ jobs:
             scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$script"  "$username"@"$ip":/opt &> /dev/null 
 
             ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/$script" &> /dev/null
-  
+
+            
+    
           
             done
       
             done
+
+            
             
 
-               
+      - name: script
+        run: |
+            
+            set +e     
+  
+             
+            usernames=("ubuntu" "ec2-user" "admin")   
+          
+            ips=($(aws ec2 describe-instances --region ${{ env.Region }}  --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
+          
+                  
+            for username in "${usernames[@]}"; do
+ 
+            for ip in "${ips[@]}"; do
 
+            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  nginx.yml  "$username"@"$ip":/opt &> /dev/null 
+
+            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  hosts  "$username"@"$ip":/opt &> /dev/null 
+
+            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo  ansible-playbook /opt/$nginx &> /dev/null
+
+            
+            done
+      
+            done
+
+            
+
+            
               
                      
 
