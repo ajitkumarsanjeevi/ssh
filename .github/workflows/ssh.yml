@@ -8,7 +8,7 @@ env:
   AWS_REGION: 'us-east-1' 
 jobs: 
   checkout-repo:
-    uses: ./.github/workflows/checkout-ssh.yml
+    uses: ./.github/workflows/checkout-ssh.yml 
 
   job1:
     runs-on: ubuntu-latest
