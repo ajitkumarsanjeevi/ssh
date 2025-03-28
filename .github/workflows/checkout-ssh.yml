@@ -1,14 +1,4 @@
-# .github/workflows/setup-ssh.yml
-name: 'Setup SSH and AWS Credentials'
 
-on:
-  workflow_call: 
-jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
       
 
