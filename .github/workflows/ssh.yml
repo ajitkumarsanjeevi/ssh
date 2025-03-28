@@ -34,39 +34,7 @@ jobs:
       
                                      
           
-      - name: script
-        run: |
-            
-            set +e
-          
-            
-
-            
-            script="awscli.sh" 
-            usernames=("ubuntu" "ec2-user" "admin")   
-          
-            ips=($(aws ec2 describe-instances --region ${{ env.Region }}  --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
-          
-          
-            for username in "${usernames[@]}"; do
- 
-            for ip in "${ips[@]}"; do
-
-            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"  
-
-            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$script"  "$username"@"$ip":/opt 
-
-            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/$script" 
-
-            
-    
-          
-            done
-      
-            done
-
-        continue-on-error: true    
-            
+     
 
       - name: script
         run: |
