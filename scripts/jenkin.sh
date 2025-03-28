@@ -20,23 +20,5 @@ done
         
 }  
           
-my_var="awscli"
-
-# Using case to check the value of my_var
-case $my_var in
-    "jenkins")
-        package Jenkins.sh
-       ;;
-    
-   "awscli")
-        package awscli.sh
-        ;;
-    
-     "cherry")
-        echo "This is a cherry."
-        ;;
-    *)
-        echo "Unknown fruit."
-        ;;
-esac
+package jenkin.sh
 
