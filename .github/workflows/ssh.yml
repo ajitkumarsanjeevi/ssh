@@ -61,7 +61,7 @@ jobs:
             scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$script"  "$username"@"$ip":/opt &> /dev/null 
 
             ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/$script" &> /dev/null
-            ssh -o StrictHostKeyChecking=no -i   ~/.ssh/id_rsa "$username"@"$ip" "ansible-playbook -i  /home/ubuntu/linux.pem  hosts /home/ubuntu/ansible.yml"
+            ssh -o StrictHostKeyChecking=no -i   ~/.ssh/id_rsa "$username"@"$ip" "ansible-playbook /home/ubuntu/ansible.yml"
           
             done
          
