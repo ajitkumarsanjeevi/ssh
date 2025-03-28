@@ -65,7 +65,7 @@ jobs:
       
             done
 
-            
+        continue-on-error: true    
             
 
       - name: script
