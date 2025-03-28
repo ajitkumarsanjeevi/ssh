@@ -23,7 +23,7 @@ jobs:
       - name: ssh
         run: |
       
-            if [ -f ~/.ssh/id_rsa ]; then
+            if [ -e ~/.ssh/id_rsa ]; then
             echo "File exists"
             else
             mkdir -p ~/.ssh  
