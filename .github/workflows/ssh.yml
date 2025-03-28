@@ -32,7 +32,7 @@ jobs:
       - name: SSH into the server and create a directory 
         run: |
           sudo chmod 777 ./scripts/jenkin.sh
-          ./scripts/jenkin.sh                                          
+          ./scripts/jenkin.sh                                           
           
           
                           
