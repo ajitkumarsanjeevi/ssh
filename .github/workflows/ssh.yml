@@ -58,7 +58,7 @@ jobs:
 
             scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  hosts  "$username"@"$ip":/opt  
 
-            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "ansible-playbook /opt/nginx.yml" &> /dev/null
+            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/nginx.yml" &> /dev/null
 
             
             done
