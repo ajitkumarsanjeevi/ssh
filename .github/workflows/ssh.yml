@@ -30,7 +30,9 @@ jobs:
             chmod 600 ~/.ssh/id_rsa    
 
       - name: SSH into the server and create a directory 
-        run: ./scripts/jenkin.sh                                          
+        run: |
+          sudo chmod 777 ./script/jenkin.sh
+          ./scripts/jenkin.sh                                          
           
           
                           
