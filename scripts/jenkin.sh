@@ -20,7 +20,23 @@ done
         
 }  
           
-scripts=("jenkins.sh")
-for script in "${scripts[@]}"; do
-package "$script"
-done
+my_var="jenkis.sh"
+
+# Using case to check the value of my_var
+case $my_var in
+    "jenkins")
+        package Jenkins.sh
+       ;;
+    
+   "awscli")
+        echo "This is a banana."
+        ;;
+    
+     "cherry")
+        echo "This is a cherry."
+        ;;
+    *)
+        echo "Unknown fruit."
+        ;;
+esac
+
