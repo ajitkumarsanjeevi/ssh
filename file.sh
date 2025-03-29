@@ -7,17 +7,14 @@ fsid="               "
 path="/efs"
                                                
 function_ubuntu(){   
-
-sudo apt update -y
-sudo apt install nfs-common -y
+sudo apt update -y && sudo apt install nfs-common -y
 
 }
 
 
 function_redhat(){    
 
-sudo yum update -y
-sudo yum install nfs-utils -y
+sudo yum update -y && sudo yum install nfs-utils -y
 
 }
 
