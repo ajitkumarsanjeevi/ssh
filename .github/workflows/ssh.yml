@@ -37,6 +37,7 @@ jobs:
 
       - name: destory
         run: terraform destroy -auto-approve
+        continue-on-error: true
        
           
 
