@@ -45,7 +45,7 @@ jobs:
           
             key_path="~/.ssh/id_rsa"
           
-            script=jenkins.sh
+            script="jenkins.sh"
             usernames=("ubuntu" "ec2-user" "admin")   
           
             ips=($(aws ec2 describe-instances --region ${{ env.AWS_REGION }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
