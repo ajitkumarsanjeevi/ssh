@@ -26,7 +26,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.Region }} 
 
-      - name: init
+      - name: in
         run: terraform init
 
       - name: plan
@@ -48,50 +48,33 @@ jobs:
                 
     
       - name: script
-        run: |                                            
-        
-         sudo  chmod 777 ./scripts/jenkins.sh
-         ./scripts/jenkins.sh
-
-
-  job2:
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout code
-        uses: actions/checkout@v4    
-      
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.Region }} 
-
-      - name: ssh    
-        run: |    
-            mkdir -p ~/.ssh   
-            echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
-            chmod 600 ~/.ssh/id_rsa    
-              
-    
-      - name: awscli
-        run: |                                            
-        
-         sudo  chmod 777 ./scripts/awscli.sh 
-         ./scripts/awscli.sh
-
-      - name: ansible
         run: |
-           ansible-playbook nginx.yml
-
-
-    
-         
+           set +e
+          
+          
+            key_path="~/.ssh/id_rsa"
+            script="awscli.sh"
+            usernames=("ubuntu" "ec2-user" "admin")   
+          
+            ips=($(aws ec2 describe-instances --region ${{ env.AWS_REGION }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
+          
+          
+             for username in "${usernames[@]}"; do
  
-                     
+            for ip in "${ips[@]}"; do
 
+           ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null
 
+           scp -o StrictHostKeyChecking=no -i  "$key_path"  "$script"  "$username"@"$ip":/opt &> /dev/null
 
+           ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo sh /opt/$script" &> /dev/null                           
+          
+           done
+         
+           done
+
+        
+         
  
                           
                                      
