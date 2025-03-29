@@ -2,9 +2,6 @@
           
           set +e
 
-            mkdir -p ~/.ssh  
-            echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
-            chmod 600 ~/.ssh/id_rsa    
             
           
           
