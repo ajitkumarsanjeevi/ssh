@@ -64,6 +64,8 @@ jobs:
              for username in "${usernames[@]}"; do
  
              for ip in "${ips[@]}"; do
+             
+             ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo chmod /opt/nginx.yml"
 
              scp -o StrictHostKeyChecking=no -i  "$key_path"  nginx  "$username"@"$ip":/opt 
              scp -o StrictHostKeyChecking=no -i  "$key_path"  nginx.yml  "$username"@"$ip":/opt 
