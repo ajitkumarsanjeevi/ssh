@@ -19,10 +19,7 @@ variable "egress-rules" {
   default = [22,8080,80,443,2049]
 }
 
-variable "instances" 
-  type    = list(string)
-  default = ["instance-1"]
-}
+
 
 
   
