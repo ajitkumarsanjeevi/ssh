@@ -26,18 +26,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.Region }} 
 
-      - name: in
-        run: terraform init
-
-      - name: plan
-        run: terraform plan
-
-      - name: apply
-        run: terraform apply -auto-approve
-
-      - name: destory
-        run: terraform destroy -auto-approve
-        continue-on-error: true
+      
+        
        
           
 
@@ -67,7 +57,7 @@ jobs:
              
              ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo chmod 777 /opt/"
 
-             scp -o StrictHostKeyChecking=no -i  "$key_path"  nginx  "$username"@"$ip":/opt 
+             scp -o StrictHostKeyChecking=no -i  "$key_path"  html "$username"@"$ip":/opt 
              scp -o StrictHostKeyChecking=no -i  "$key_path"  nginx.yml  "$username"@"$ip":/opt 
              ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo ansible-playbook /opt/nginx.yml"
 
