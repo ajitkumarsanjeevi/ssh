@@ -68,6 +68,12 @@ jobs:
 
             scp -o StrictHostKeyChecking=no -i  "$key_path"  "$1"  "$username"@"$ip":/opt &> /dev/null
 
+            
+
+            
+
+            
+
             ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo sh /opt/$1" &> /dev/null                           
           
             done
@@ -75,10 +81,12 @@ jobs:
             done
             }
 
-            scripts=("ansible.sh" "ansfile.sh")
+            scripts=("ansible.sh")
             for script in "${scripts[@]}"; do
             package "$script"
             done
+
+            
            
            
 
