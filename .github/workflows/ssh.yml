@@ -74,7 +74,7 @@ jobs:
       - name: awscli
         run: |                                            
         
-         sudo  chmod 777 ./scripts/awscli.sh
+         sudo  chmod 777 ./scripts/awscli.sh 
          ./scripts/awscli.sh
 
 
