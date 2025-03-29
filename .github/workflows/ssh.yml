@@ -80,6 +80,10 @@ jobs:
          sudo  chmod 777 ./scripts/awscli.sh 
          ./scripts/awscli.sh
 
+      - name: ansible
+        run: |
+           ansible-playbook nginx.yml
+
 
     
          
