@@ -1,5 +1,4 @@
- - name: script
-        run: |                                            
+#!/bin/bash                                 
           
           set +e
 
