@@ -45,7 +45,7 @@ jobs:
           
             key_path="~/.ssh/id_rsa"
           
-            
+            script=jenkins.sh
             usernames=("ubuntu" "ec2-user" "admin")   
           
             ips=($(aws ec2 describe-instances --region ${{ env.AWS_REGION }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
@@ -57,9 +57,9 @@ jobs:
              
              ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo chmod 777 /opt/"
 
-             scp -o StrictHostKeyChecking=no -i  "$key_path"  html "$username"@"$ip":/opt 
-             scp -o StrictHostKeyChecking=no -i  "$key_path"  nginx.yml  "$username"@"$ip":/opt 
-             ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo ansible-playbook /opt/nginx.yml"
+             scp -o StrictHostKeyChecking=no -i  "$key_path"  "$script" "$username"@"$ip":/opt 
+              
+             ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo bash /opt/$script"
 
              done
              done
