@@ -86,7 +86,26 @@ jobs:
             package "$script"
             done
 
+      - name: script
+        run: |
+           set +e
+          
+          
+            key_path="~/.ssh/id_rsa"
+          
             
+            usernames=("ubuntu" "ec2-user" "admin")   
+          
+            ips=($(aws ec2 describe-instances --region ${{ env.AWS_REGION }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
+          
+          
+             for username in "${usernames[@]}"; do
+ 
+             for ip in "${ips[@]}"; do 
+
+             scp -o StrictHostKeyChecking=no -i  "$key_path"  nginx  "$username"@"$ip":/opt 
+             scp -o StrictHostKeyChecking=no -i  "$key_path"  nginx.yml  "$username"@"$ip":/opt 
+             ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo ansible-playbook /opt/nginx.yml" 
            
            
 
