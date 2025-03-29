@@ -53,13 +53,13 @@ jobs:
             mkdir -p ~/.ssh   
             echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
             chmod 600 ~/.ssh/id_rsa    
-                
+              
     
       - name: awscli
         run: |                                            
         
-         sudo  chmod 777 ./scripts/jenkins.sh
-         ./scripts/jenkins.sh
+         sudo  chmod 777 ./scripts/awscli.sh
+         ./scripts/awscli.sh
 
 
     
