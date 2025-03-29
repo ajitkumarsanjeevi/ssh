@@ -7,13 +7,13 @@
             chmod 600 ~/.ssh/id_rsa    
             
           
-          region="us-east-1"
+          
 
           script="jenkins.sh"
           
           usernames=("ubuntu" "ec2-user" "admin")   
           
-          ips=($(aws ec2 describe-instances --region $region --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
+          ips=($(aws ec2 describe-instances --region us-east-1 --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
           
           
           for username in "${usernames[@]}"; do
