@@ -10,7 +10,7 @@
           
           region="us-east-1"
 
-          script="abc.sh"
+          script="jenkins.sh"
           
           usernames=("ubuntu" "ec2-user" "admin")   
           
