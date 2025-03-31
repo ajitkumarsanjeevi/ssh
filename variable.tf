@@ -20,7 +20,7 @@ variable "egress-rules" {
 }
 
 variable "ec2_instances" {
-type = list[string]
+type = list(string)
 default = ["instance-1"]
 }
 
