@@ -122,9 +122,9 @@ jobs:
  
           for ip in "${ips[@]}"; do
 
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"${my_array[@]}" "sudo chmod 777 /opt" &> /dev/null 
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"${ip[@]}" "sudo chmod 777 /opt" &> /dev/null 
 
-          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "deployment.yml"  "$username"@"${my_array[@]}":/opt &> /dev/null 
+          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "deployment.yml"  "$username"@"${ip[@]}":/opt &> /dev/null 
 
           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo kubectl apply -f  /opt/deployment.yml"                         
           
