@@ -48,7 +48,7 @@ jobs:
       - name: script
         run: |
          sudo chmod 777 /scripts/file.sh 
-         ./scripts/file.sh
+         ./scripts/awscli.sh
          
       - name: echo
         run: echo "helloworld"
