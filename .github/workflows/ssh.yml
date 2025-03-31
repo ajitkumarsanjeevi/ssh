@@ -93,7 +93,40 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.Region }}  
+          aws-region: ${{ env.Region }}
+
+      - name: ssh    
+        run: |    
+            mkdir -p ~/.ssh   
+            echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
+            chmod 600 ~/.ssh/id_rsa
+             - name: script
+        
+      - name: ansible 
+        run: |
+           set +e
+          
+          
+            key_path="~/.ssh/id_rsa"
+          
+          
+          
+            usernames=("ubuntu" "ec2-user" "admin")   
+          
+            ips=($(aws ec2 describe-instances --region ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
+          
+          
+             for username in "${usernames[@]}"; do
+ 
+             for ip in "${ips[@]}"; do
+             
+             ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo ansible-playbook nginx.yml" &> /dev/null
+
+             done
+             done
+
+             
+
 
              
 
