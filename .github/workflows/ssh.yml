@@ -49,6 +49,9 @@ jobs:
         run: |
          sudo chmod 777 /scripts/file.sh 
          ./scripts/file.sh
+         
+      - name: echo
+        run: echo "helloworld"
           
           
             
