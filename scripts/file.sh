@@ -4,6 +4,7 @@
           
           
             key_path="~/.ssh/id_rsa"
+            script="file.sh"
           
           
             
@@ -19,9 +20,9 @@
              
              ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo chmod 777 /opt/" &> /dev/null
 
-             scp -o StrictHostKeyChecking=no -i  "$key_path"  "$1" "$username"@"$ip":/opt &> /dev/null
+             scp -o StrictHostKeyChecking=no -i  "$key_path"  "$script" "$username"@"$ip":/opt &> /dev/null
               
-             ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo bash /opt/$1" &> /dev/null
+             ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo bash /opt/$script" &> /dev/null
 
              
 
