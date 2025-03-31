@@ -6,7 +6,7 @@
           
           
 
-          script="awscli.sh"
+          
           
           usernames=("ubuntu" "ec2-user" "admin")   
           
@@ -19,10 +19,15 @@
 
           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null 
 
-          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$script"  "$username"@"$ip":/opt &> /dev/null 
+          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt &> /dev/null 
 
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$script"                         
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$1"                         
           
           done
          
           done
+
+          for script in "${scripts[@]}";do
+          packages "$script"
+          done
+          
