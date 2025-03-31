@@ -48,6 +48,8 @@ jobs:
         run: |
          sudo chmod 777 ./scripts/awscli.sh 
          ./scripts/awscli.sh
+
+        continue-on-error: true
          
       - name: echo
         run: echo "helloworld"
