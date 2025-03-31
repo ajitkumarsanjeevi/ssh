@@ -72,8 +72,6 @@ jobs:
               
              ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo bash /opt/$1" &> /dev/null
 
-             ssh -o StrictHostKeyChecking=no -i  "$key_path" "$username"@"$ip" "sudo ansible-playbook /opt/nginx.yml"
-
              done
              done
 
@@ -83,6 +81,16 @@ jobs:
              for script in  "${scripts[@]}"; do
              function "$script"
              done
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v4 
+
+             
+
+             
              
  
 
