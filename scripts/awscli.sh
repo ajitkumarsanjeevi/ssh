@@ -7,7 +7,7 @@
           
 
           
-          
+          packages(){
           usernames=("ubuntu" "ec2-user" "admin")   
           
           ips=($(aws ec2 describe-instances --region us-east-1 --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
@@ -26,6 +26,7 @@
           done
          
           done
+          }
 
           for script in "${scripts[@]}";do
           packages "$script"
