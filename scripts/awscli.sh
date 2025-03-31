@@ -28,6 +28,7 @@
           done
           }
 
+          scripts=("awscli.sh" "jenkins.sh") 
           for script in "${scripts[@]}";do
           packages "$script"
           done
