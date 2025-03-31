@@ -38,11 +38,6 @@ jobs:
       - name: destroy
         run: terraform destroy -auto-approve
 
-      
-        
-       
-          
-
       - name: ssh    
         run: |    
             mkdir -p ~/.ssh   
