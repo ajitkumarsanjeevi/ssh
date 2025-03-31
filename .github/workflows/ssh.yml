@@ -48,7 +48,7 @@ jobs:
       - name: script
         run: |
          sudo chmod 777 /scripts/file.sh 
-         ./scripts/script1.sh
+         ./scripts/file.sh
           
           
             
