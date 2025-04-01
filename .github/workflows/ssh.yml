@@ -45,7 +45,7 @@ jobs:
           files(){
           usernames=("ubuntu" "ec2-user" "admin")
           
-          ips=("18.212.163.218")   
+          ips=("3.86.35.74")   
           
           
           for username in "${usernames[@]}"; do 
@@ -71,7 +71,7 @@ jobs:
         continue-on-error: true  
       - name: ssh                                           
            
-        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@18.212.163.218 "sudo ansible-playbook /opt/ecr.yml"
+        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@3.86.35.74 "sudo ansible-playbook /opt/ecr.yml"
          
              
 
