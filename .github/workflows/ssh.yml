@@ -63,6 +63,13 @@ jobs:
           done
         continue-on-error: true
 
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2     
+
 
             
                 
