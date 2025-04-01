@@ -63,7 +63,7 @@ jobs:
           done
           }
 
-          scripts=("awscli.sh" "ecr.yml")
+          scripts=("awscli.sh" "docker.sh" "ecr.yml") 
           for script in "${scripts[@]}"; do
           files "$script"
           done
