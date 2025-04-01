@@ -41,7 +41,7 @@ jobs:
           
           
 
-          script="awscli.sh"
+          script="dockcer.sh"
           
           usernames=("ubuntu" "ec2-user" "admin")   
           
