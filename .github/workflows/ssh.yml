@@ -56,7 +56,7 @@ jobs:
 
           scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt
 
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/ansible.yml"                           
+                                     
           
           done
 
@@ -67,6 +67,11 @@ jobs:
           for script in "${scripts[@]}"; do
           files "$script"
           done
+
+          
+      - name: ssh                                           
+          
+        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/ansible.yml"
          
              
 
