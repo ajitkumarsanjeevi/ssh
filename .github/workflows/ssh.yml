@@ -38,8 +38,12 @@ jobs:
                 
     
     
-      - name: ans
-        run:  echo "ANSIBLE_HOST_KEY_CHECKING=False" >> $GITHUB_ENV
+      
+
+      - name: Add the remote host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 34.229.198.173 >> ~/.ssh/known_hosts
 
       - name: ansible
         run:  ansible-playbook -i hosts ansbile.yml
