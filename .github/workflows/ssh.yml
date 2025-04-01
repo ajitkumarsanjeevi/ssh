@@ -41,7 +41,7 @@ jobs:
           
           
 
-          script="dockcer.sh"
+          script="docker.sh"
           
           usernames=("ubuntu" "ec2-user" "admin")   
           
