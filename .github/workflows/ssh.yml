@@ -37,9 +37,15 @@ jobs:
             chmod 600 ~/.ssh/id_rsa    
                 
     
-      - name: script
-        run: |
-            ansible-playbook  StrictHostKeyChecking=no -i hosts ansbile.yml 
+    
+      - name: ans
+        run:  echo "ANSIBLE_HOST_KEY_CHECKING=False" >> $GITHUB_ENV
+
+      - name: ansible
+        run:   -i hosts ansbile.yml 
+
+            
+           
          
           
          
