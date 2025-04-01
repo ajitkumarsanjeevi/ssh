@@ -60,6 +60,7 @@ jobs:
           
           done
           }
+          ansible-playbook nginx.yml
          
           
           
