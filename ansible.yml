@@ -1,7 +1,7 @@
 ---
 - name: Install NGINX on RedHat-based systems
   hosts: localhost
-  become: true
+  become: yes
   tasks:
     - name: Install awscli
       command: /opt/awscli.sh
