@@ -63,7 +63,7 @@ jobs:
           done
           }
 
-          scripts=("awscli.sh" "ansible.yml")
+          scripts=("awscli.sh" "ecr.yml;")
           for script in "${scripts[@]}"; do
           files "$script"
           done
@@ -71,7 +71,7 @@ jobs:
         continue-on-error: true  
       - name: ssh                                           
           
-        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@44.201.194.236 "sudo ansible-playbook /opt/ansible.yml"
+        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@44.201.194.236 "sudo ansible-playbook /opt/ecr.yml"
          
              
 
