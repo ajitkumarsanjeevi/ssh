@@ -54,7 +54,11 @@ jobs:
 
           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null 
 
-          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt &> /dev/null                            
+          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt &> /dev/null
+
+           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/ngin.yml" &> /dev/null 
+
+          
           
           done
          
@@ -67,8 +71,7 @@ jobs:
           files "$file"
           done
 
-      - name: deploy
-        run: ansible-playbook opt/nginx.yml
+      
 
           
 
