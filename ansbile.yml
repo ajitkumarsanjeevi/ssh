@@ -1,7 +1,7 @@
 ---
 - name: Install Nginx on remote hosts
   hosts: all
-  become: true 
+  become: yes
   tasks:
     - name: Update apt package list 
       apt:
