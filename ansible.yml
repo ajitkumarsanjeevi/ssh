@@ -4,5 +4,5 @@
   become: yes
   tasks:
     - name: Install awscli
-      command: sudo /opt/awscli.sh
+      command: sudo bash /opt/awscli.sh
       
