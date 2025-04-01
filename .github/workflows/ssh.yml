@@ -42,7 +42,7 @@ jobs:
         run:  echo "ANSIBLE_HOST_KEY_CHECKING=False" >> $GITHUB_ENV
 
       - name: ansible
-        run:  ansbile -i hosts ansbile.yml 
+        run:  ansible-playbook -i hosts ansbile.yml 
 
             
            
