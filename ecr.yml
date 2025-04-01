@@ -8,6 +8,9 @@
 
     - name: install awscli
       command: sudo bash /opt/awscli.sh
+
+    - name: install kubectl
+      command: sudo bash /opt/kubectl.sh
       
     - name: Ensure the AWS ECR repository is create
       command: aws ecr create-repository --repository-name nginx --region us-east-1
