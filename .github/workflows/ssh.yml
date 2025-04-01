@@ -41,7 +41,7 @@ jobs:
           
           region="us-east-1"
 
-          script="abc.sh"
+          script="awscli.sh"
           
           usernames=("ubuntu" "ec2-user" "admin")   
           
