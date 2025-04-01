@@ -27,9 +27,6 @@ jobs:
           aws-region: ${{ env.Region }} 
 
      
-
-      
-
       - name: ssh    
         run: |    
             mkdir -p ~/.ssh   
