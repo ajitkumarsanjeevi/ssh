@@ -42,7 +42,7 @@ jobs:
           
 
         
-          files(){
+          eks_files(){
           usernames=("ubuntu" "ec2-user" "admin")   
           
           ips=("ip") 
@@ -62,7 +62,7 @@ jobs:
 
           }
 
-          files=(         )
+          eks_files=(         )
           for file in "${files[@]}"; do
           files "$file"
           done
