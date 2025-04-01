@@ -56,14 +56,14 @@ jobs:
 
           scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt
 
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/playbook.yml"                           
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/ansible.yml"                           
           
           done
 
           done
           }
 
-          scripts=("awscli.sh" "playbook.yml")
+          scripts=("awscli.sh" "ansible.yml")
           for script in "${scripts[@]}"; do
           files "$script"
           done
