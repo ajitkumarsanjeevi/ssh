@@ -64,7 +64,7 @@ jobs:
           done
          
           done
-
+        continue-on-error: true
 
 
             
