@@ -8,7 +8,7 @@ on:
 env:
   Region: us-east-1
 jobs:
-  job1: 
+  job1:  
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout code
