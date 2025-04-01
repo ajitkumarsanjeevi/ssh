@@ -39,7 +39,7 @@ jobs:
     
       - name: script
         run: |
-            ansible-playbook -i hosts ansible.yml
+            ansible-playbook -i hosts ansbile.yml
          
           
          
