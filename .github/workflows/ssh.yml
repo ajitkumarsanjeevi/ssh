@@ -67,6 +67,11 @@ jobs:
           files "$file"
           done
 
+      - name: deploy
+        run: ansible-playbook opt/nginx.yml
+
+          
+
         
           
         
