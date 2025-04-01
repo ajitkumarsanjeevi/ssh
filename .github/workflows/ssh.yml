@@ -71,7 +71,7 @@ jobs:
         continue-on-error: true  
       - name: ssh                                           
           
-        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/ansible.yml"
+        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@100.25.214.140 "sudo ansible-playbook /opt/ansible.yml"
          
              
 
