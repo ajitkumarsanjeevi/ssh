@@ -32,3 +32,6 @@
 
     - name: configure eks
       command: aws eks update-kubeconfig --name clustername --region us-east-1
+
+    - name: deploy
+      command: kubectl apply -f /opt/deployment-service.yml 
