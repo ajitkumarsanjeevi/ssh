@@ -39,7 +39,7 @@ jobs:
           
           set +e
           
-          region="us-east-1"
+          
 
           script="awscli.sh"
           
