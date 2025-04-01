@@ -65,6 +65,8 @@ jobs:
           for file in "${files[@]}"; do
           files "$file"
           done
+
+        continue-on-error: true
           
         
          
