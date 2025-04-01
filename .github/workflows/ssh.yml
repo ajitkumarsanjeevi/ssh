@@ -67,7 +67,7 @@ jobs:
           files "$file"
           done
 
-        continue-on-error: true
+        
           
         
          
