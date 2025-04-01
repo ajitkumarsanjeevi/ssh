@@ -41,7 +41,7 @@ jobs:
           
           
 
-          script="docker.sh"
+          
           
           usernames=("ubuntu" "ec2-user" "admin")   
           
@@ -54,15 +54,18 @@ jobs:
 
           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"  
 
-          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$script"  "$username"@"$ip":/opt
+          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt
 
           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/playbook.yml"                           
           
           done
-         
+
           done
 
-          
+          scripts=("awscli.sh" "playbook.yml")
+          for script in "${scripts[@]}"; do
+          files "$script"
+          done
          
              
 
