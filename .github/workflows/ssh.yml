@@ -39,7 +39,7 @@ jobs:
     
       - name: script
         run: |
-            ansible-playbook -o StrictHostKeyChecking=no -i hosts ansbile.yml 
+            ansible-playbook  StrictHostKeyChecking=no -i hosts ansbile.yml 
          
           
          
