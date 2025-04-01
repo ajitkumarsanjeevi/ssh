@@ -4,5 +4,5 @@
   become: true
   tasks:
     - name: Install awscli
-      command: /opt/my_script.sh
+      command: /opt/awscli.sh
       
