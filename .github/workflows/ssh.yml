@@ -76,7 +76,10 @@ jobs:
             for package in "${packages[@]}"; do
             scripts "$package"
             done
+        continue-on-error: true
 
+      - name: ansible_playbook
+        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@13.217.113.255 "sudo ansible-playbook /opt/ecr.yml" &> /dev/null 
          
         
          
