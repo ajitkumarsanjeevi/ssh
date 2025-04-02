@@ -3,10 +3,14 @@
   become: true
   tasks:
 
+    - name: install aws_cli
+      command: sudo bash awscli.sh
       
     - name: Ensure the AWS ECR repository is create
       command: aws ecr create-repository --repository-name nginx --region us-east-1
       ignore_errors: yes
+
+      
 
     - name: login to ecr
 
