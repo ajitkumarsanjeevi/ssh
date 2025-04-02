@@ -10,14 +10,14 @@
       command: sudo bash docker.sh
       
     - name: Ensure the AWS ECR repository is create
-      command: aws ecr create-repository --repository-name nginx --region us-east-1 
+      command: aws ecr create-repository --repository-name nginx --region ap-south-1
       ignore_errors: yes
 
       
 
     - name: login to ecr
 
-      shell: "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 585768173504.dkr.ecr.us-east-1.amazonaws.com"
+      shell: "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 585768173504.dkr.ecr.ap-south-1.amazonaws.com"
 
 
     - name: dockerbuild
@@ -26,10 +26,10 @@
 
 
     - name: tag
-      command: sudo docker tag nginx:latest 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+      command: sudo docker tag nginx:latest 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
 
 
     - name: push
-      command: sudo docker push 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+      command: sudo docker push 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
 
     
