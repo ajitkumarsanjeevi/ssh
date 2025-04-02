@@ -8,18 +8,4 @@
       apt:
         name: nginx
         state: present
-      notify:
-        - Restart NGINX  
-
-    - name: Copy NGINX configuration file
-      copy:
-        src: /opt/html
-        dest: /var/www/html/index.html
-      notify:
-        - Restart NGINX  
-
-  handlers:
-    - name: Restart NGINX
-      service:
-        name: nginx
-        state: restarted  
+     
