@@ -7,7 +7,7 @@ on:
    
 env:                        
   Region: us-east-1  
-jobs:
+jobs: 
   job1:  
     runs-on: ubuntu-latest
     steps: 
