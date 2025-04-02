@@ -3,7 +3,8 @@
   become: true
   tasks:
 
-      
+    - name: configure
+      run: aws configure
     - name: Ensure the AWS ECR repository is create
       command: aws ecr create-repository --repository-name nginx --region us-east-1
       ignore_errors: yes
