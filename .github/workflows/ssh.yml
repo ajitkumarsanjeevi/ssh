@@ -14,7 +14,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4 
 
-      - name: ansible-playbook nginx.yml  
+      - name: nginx
+        run: ansible-playbook nginx.yml  
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
