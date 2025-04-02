@@ -1,0 +1,26 @@
+- name: Create ECR Repository
+  hosts: localhost
+  become: true
+  tasks:
+
+      
+    - name: Ensure the AWS ECR repository is create
+      command: aws ecr create-repository --repository-name nginx --region us-east-1
+      ignore_errors: yes
+
+    - name: login to ecr
+
+      shell: "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 585768173504.dkr.ecr.us-east-1.amazonaws.com"
+
+
+    - name: dockerbuild
+      command: docker build -t nginx .
+
+
+
+    - name: tag
+      command: docker tag nginx:latest 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+
+
+    - name: push
+      command: docker push 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
