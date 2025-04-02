@@ -67,7 +67,7 @@ jobs:
 
             scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt &> /dev/null
 
-            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash ansible.sh" &> /dev/null 
+            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/ansible.sh" &> /dev/null 
 
             done
             done
