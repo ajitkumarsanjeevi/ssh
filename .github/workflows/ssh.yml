@@ -54,7 +54,7 @@ jobs:
             done
             done
             }
-            packages("awscli.sh" "Dockerfile" "ecr.yml" "ansible.sh")        
+            packages=("awscli.sh" "Dockerfile" "ecr.yml" "ansible.sh")        
             for packages in "${usernames[@]}"; do
             scripts "$package"
             done
