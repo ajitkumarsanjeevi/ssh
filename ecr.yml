@@ -21,15 +21,15 @@
 
 
     - name: dockerbuild
-      command: docker build -t nginx .
+      command: sudo docker build -t nginx .
 
 
 
     - name: tag
-      command: docker tag nginx:latest 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+      command: sudo docker tag nginx:latest 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
 
 
     - name: push
-      command: docker push 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+      command: sudo docker push 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
 
     
