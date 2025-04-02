@@ -1,10 +1,10 @@
 #!/bin/bash
 
-ROLE_NAME="ecrfullaccess"
+ROLE_NAME="ecrpoweruser"
 
 region="us-east-1"
 
-INSTANCE_PROFILE_NAME="ecrinstanceprofile"
+INSTANCE_PROFILE_NAME="ecrpoweruserinstanceprofile"
  
 s3_fullaccess() {   
 
@@ -19,7 +19,7 @@ echo "Attaching AmazonS3FullAccess policy to the role..."
 
 aws iam attach-role-policy \
     --role-name $ROLE_NAME \
-    --policy-arn arn:aws:iam::aws:policy/AmazonElasticContainerRegistryPublicFullAccess 
+    --policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser
 
 aws iam create-instance-profile \
     --instance-profile-name $INSTANCE_PROFILE_NAME
