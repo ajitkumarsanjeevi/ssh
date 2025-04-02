@@ -5,7 +5,7 @@ on:
     branches: 
       - main  
   
-env:
+env:                       
   Region: us-east-1
 jobs:
   job1:  
@@ -13,6 +13,8 @@ jobs:
     steps: 
       - name: Checkout code
         uses: actions/checkout@v4 
+
+      - name: ansible-playbook nginx.yml  
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
