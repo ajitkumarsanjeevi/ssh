@@ -26,6 +26,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.Region }} 
 
+      - name: role
+        run: sh role.sh
+
 
       - name: ssh    
         run: |    
