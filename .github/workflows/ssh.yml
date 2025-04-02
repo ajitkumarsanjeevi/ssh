@@ -68,7 +68,7 @@ jobs:
           username="ubuntu"
           ipadress="    "   
 
-          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh ansible.sh" 
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/ansible.sh" 
          
               
 
