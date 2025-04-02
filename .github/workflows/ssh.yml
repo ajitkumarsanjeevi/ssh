@@ -75,7 +75,7 @@ jobs:
         continue-on-error: true
 
       - name: ansible_playbook
-        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@54.80.98.103 "sudo ansible-playbook /opt/ecr.yml" 
+        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@18.206.117.186 "sudo ansible-playbook /opt/ecr.yml" 
          
         
          
