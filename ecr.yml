@@ -1,6 +1,8 @@
 - name: Create ECR Repository
   hosts: localhost
   become: true
+  vars:
+    region: "ap-south-1" 
   tasks:
 
     - name: install aws_cli
@@ -10,14 +12,14 @@
       command: sudo bash docker.sh
       
     - name: Ensure the AWS ECR repository is create
-      command: aws ecr create-repository --repository-name nginx --region ap-south-1
+      command: aws ecr create-repository --repository-name nginx --region {{ region }}
       ignore_errors: yes
 
       
 
     - name: login to ecr
 
-      shell: "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 585768173504.dkr.ecr.ap-south-1.amazonaws.com"
+      shell: "aws ecr get-login-password --region {{ region }} | docker login --username AWS --password-stdin 585768173504.dkr.ecr.{{ region }}.amazonaws.com"
 
 
     - name: dockerbuild
@@ -26,10 +28,10 @@
 
 
     - name: tag
-      command: sudo docker tag nginx:latest 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
+      command: sudo docker tag nginx:latest 585768173504.dkr.ecr.{{ region }}.amazonaws.com/nginx:latest
 
 
     - name: push
-      command: sudo docker push 585768173504.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest
+      command: sudo docker push 585768173504.dkr.ecr.{{ region }}.amazonaws.com/nginx:latest
 
     
