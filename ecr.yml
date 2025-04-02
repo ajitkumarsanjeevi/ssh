@@ -5,6 +5,9 @@
 
     - name: install aws_cli
       command: sudo bash awscli.sh
+
+    - name: install docker
+      command: sudo bash docker.sh
       
     - name: Ensure the AWS ECR repository is create
       command: aws ecr create-repository --repository-name nginx --region us-east-1
