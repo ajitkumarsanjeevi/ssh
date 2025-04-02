@@ -14,8 +14,69 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4 
 
+     
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.3.0 
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4 
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.Region }} 
+          
       - name: nginx
-        run: ansible-playbook nginx.yml  
+        run: ansible-playbook docker.yml
+     
+      - name: ssh    
+        run: |    
+            mkdir -p ~/.ssh   
+            echo "${{ secrets.ssh_key }}" > ~/.ssh/id_rsa 
+            chmod 600 ~/.ssh/id_rsa   
+
+
+      - name: ssh
+        run: |                                            
+          
+          set +e
+          
+          
+
+          
+          files(){
+          usernames=("ubuntu" "ec2-user" "admin")
+          
+          ips=("3.86.35.74")   
+          
+          
+          for username in "${usernames[@]}"; do 
+ 
+          for ip in "${ips[@]}"; do
+
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"  
+
+          scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt
+
+                                     
+          
+          done
+
+          done
+          }
+
+          scripts=("nginx-deployment.yml", "ecr.yml" "Dockerfile") 
+          for script in "${scripts[@]}"; do
+          files "$script"
+          done
+
+        continue-on-error: true  
+      - name: ssh                                           
+           
+        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@3.86.35.74 "sudo ansible-playbook /opt/ecr.yml"
+         
 
       
              
