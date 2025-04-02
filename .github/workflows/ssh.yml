@@ -67,13 +67,13 @@ jobs:
 
             scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt &> /dev/null
 
-             ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash ansible.sh" &> /dev/null 
+            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash ansible.sh" &> /dev/null 
 
             done
             done
             }
             packages=("awscli.sh" "Dockerfile" "ecr.yml" "ansible.sh")        
-            for packages in "${usernames[@]}"; do
+            for package in "${packages[@]}"; do
             scripts "$package"
             done
 
