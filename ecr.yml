@@ -25,8 +25,4 @@
     - name: push
       command: docker push 585768173504.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
 
-    - name: configure eks
-      command: aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
-
-    - name: deploy
-      command: kubectl apply -f /opt/nginx-deployment.yml 
+    
