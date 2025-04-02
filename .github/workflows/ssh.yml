@@ -33,7 +33,7 @@ jobs:
         run: terraform plan
 
       - name: terraform apply 
-        run: terraform apply -auto-approve
+        run: terraform destory -auto-approve
 
        
 
