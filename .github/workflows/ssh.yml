@@ -5,8 +5,8 @@ on:
     branches: 
       - main  
   
-env:                       
-  Region: us-east-1 
+env:                        
+  Region: us-east-1  
 jobs:
   job1:  
     runs-on: ubuntu-latest
