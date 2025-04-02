@@ -26,17 +26,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.Region }} 
 
-    
 
-       
-
-      
-
-      - name: s3_fullaccess_role
-        run: sh role.sh
-        continue-on-error: true
-          
-     
       - name: ssh    
         run: |    
             mkdir -p ~/.ssh   
@@ -44,50 +34,35 @@ jobs:
             chmod 600 ~/.ssh/id_rsa 
 
 
+          
+            set +e 
 
-                                            
-      - name: nginx
-        run: |
-     
-            set +e  
-
-            ansible(){
+            script="awscli.sh"
             usernames=("ubuntu" "ec2-user" "admin")   
           
-            ips=($(aws ec2 describe-instances --region   ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
+            ips=($(aws ec2 describe-instances --region us-east-1 --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
           
           
             for username in "${usernames[@]}"; do
  
             for ip in "${ips[@]}"; do
 
-            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" 
+            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null 
 
-            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt
+            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$script"  "$username"@"$ip":/opt &> /dev/null 
 
-            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  Dockerfile  "$username"@"$ip":/opt
-
-            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  ecr.yml "$username"@"$ip":/opt
-            
-
-            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$1"                         
+            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$script"                         
           
             done
          
             done
-            }
-            scripts=("ansible.sh" "awscli.sh")
-            for script in "${scripts[@]}"; do
-            ansible "$script"
-            done
-            
+                     
+
+          
 
 
+                                            
       
-        continue-on-error: true  
-      - name: ssh                                           
-           
-        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@ipadress "sudo ansible-playbook /opt/ecr.yml"
          
 
       
