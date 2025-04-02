@@ -33,7 +33,7 @@ jobs:
         run: terraform plan
 
       - name: terraform apply 
-        run: terraform appl -auto-approve
+        run: terraform apply -auto-approve
 
       - name: terraform destrou
         run: terraform destroy -auto-approve  
