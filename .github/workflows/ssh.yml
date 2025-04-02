@@ -42,7 +42,7 @@ jobs:
       - name: nginx
         run: |
      
-            set +e 
+            set +e  
 
             script="awscli.sh"
             usernames=("ubuntu" "ec2-user" "admin")   
