@@ -26,6 +26,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.Region }} 
 
+      - name: init
+        run: terraform init
+
+      - name: plan
+        run: terraform plan
+
+      - name: terraform apply 
+        run: terraform apply -auto-approve
+
       - name: s3_fullaccess_role
         run: sh role.sh
         continue-on-error: true
