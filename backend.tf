@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "my-terrafom-remote"
-    key    = "my-terraformproject"
+    bucket = "my-terrafomproject"
+    key    = "my-terraform-state"
     region = "us-east-1"
   }
 }
