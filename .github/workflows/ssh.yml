@@ -63,7 +63,7 @@ jobs:
           done
           }
 
-          scripts=("nginx-deployment.yml") 
+          scripts=("nginx-deployment.yml", "ecr.yml") 
           for script in "${scripts[@]}"; do
           files "$script"
           done
