@@ -58,12 +58,17 @@ jobs:
             for packages in "${usernames[@]}"; do
             scripts "$package"
             done
-            
-      - name: install ansible  
-        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh ansible.sh" 
 
-      - name: execute playbook
-        run:  ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/ecr.yml" 
+         
+        
+         
+      - name: install ansible  
+        run: |
+
+          username="ubuntu"
+          ipadress="    "   
+
+          ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh ansible.sh" 
          
               
 
