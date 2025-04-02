@@ -36,7 +36,7 @@ jobs:
         run: terraform apply -auto-approve
 
       - name: terraform destroy
-        run: terraform destory -auto-approve
+        run: terraform destroy -auto-approve
 
       - name: s3_fullaccess_role
         run: sh role.sh
