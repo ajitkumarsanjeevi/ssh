@@ -3,6 +3,6 @@ terraform {
     bucket = "my-ansible-iam-bucket"
     key    = "my-terraform-state"
     region = "ap-south-1"
-    dynamodb_table = "my-terraform-lock" 
+    use_lockfile = "my-terraform-lock" 
   }
 }
