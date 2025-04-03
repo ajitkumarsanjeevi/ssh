@@ -3,13 +3,14 @@
   become: true
   vars:
     region: "ap-south-1" 
+    name: nginx
   tasks:
   
     - name: install docker
       command: sudo bash docker.sh
       
     - name: Ensure the AWS ECR repository is create
-      command: aws ecr create-repository --repository-name nginx --region {{ region }}
+      command: aws ecr create-repository --repository-name {{ name }} --region {{ region }}
       ignore_errors: yes
 
       
@@ -20,15 +21,15 @@
 
 
     - name: dockerbuild
-      command: sudo docker build -t nginx .
+      command: sudo docker build -t {{ name }} .
 
 
 
     - name: tag
-      command: sudo docker tag nginx:latest 585768173504.dkr.ecr.{{ region }}.amazonaws.com/nginx:latest
+      command: sudo docker tag nginx:latest 585768173504.dkr.ecr.{{ region }}.amazonaws.com/{{ name }}:latest
 
 
     - name: push
-      command: sudo docker push 585768173504.dkr.ecr.{{ region }}.amazonaws.com/nginx:latest
+      command: sudo docker push 585768173504.dkr.ecr.{{ region }}.amazonaws.com/{{ name }}:latest
 
     
