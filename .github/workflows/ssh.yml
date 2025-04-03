@@ -29,10 +29,11 @@ jobs:
       - name: init
         run: terraform init
 
-      - name: terraform plan
+      - name: plan
         run: terraform plan
 
-      - name: terraform apply -auto-approve  
+      - name: apply
+        run: terraform apply -auto-approve  
 
     
 
