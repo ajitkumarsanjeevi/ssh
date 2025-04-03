@@ -81,7 +81,7 @@ jobs:
         if: failure()
         uses: 8398a7/action-slack@v3
         with:
-          slack_webhook_url: https://slack.com/intl/en-in
+          slack_webhook_url: https://app.slack.com/client/T08J6B5CFPG/C08HYH5EFNK
           message: 'CI Build Failed! 😞'
 
       - name: ansible_playbook
