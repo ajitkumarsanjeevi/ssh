@@ -4,10 +4,7 @@
   vars:
     region: "ap-south-1" 
   tasks:
-
-    - name: install aws_cli
-      command: sudo bash awscli.sh
-
+  
     - name: install docker
       command: sudo bash docker.sh
       
