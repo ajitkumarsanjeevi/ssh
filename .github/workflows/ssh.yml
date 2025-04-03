@@ -26,6 +26,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.Region }} 
 
+      - name: init
+        run: terraform init
+
+      - name: terraform plan
+        run: terraform plan
+
+      - name: terraform apply -auto-approve  
+
     
 
       
