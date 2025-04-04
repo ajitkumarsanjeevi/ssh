@@ -32,15 +32,7 @@ jobs:
           aws-region: ${{ env.Region }} 
 
 
-      - name: init
-        run: terraform init
-
-      - name: plan
-        run: terraform plan
-
-
-      - name: destroy
-        run: terraform destroy -auto-approve
+      
 
 
 
@@ -54,7 +46,7 @@ jobs:
         run: |
           set +e
            
-           script="awscli.sh"
+           ansible(){
            usernames=("ubuntu" "ec2-user" "admin") 
            ips=($(aws ec2 describe-instances --region us-east-1 --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
           
@@ -67,13 +59,16 @@ jobs:
            
            done
            done 
+           }
 
            scripts=("awscli.sh" "docker.sh")
            for script in "${scripts[@]}"; do
            ansible "$script"
 
+           
+
       - name: execute playbook
-        run:  ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@ipadress "sudo ansible-playbook /opt/ecr.yml"
+        run:  ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@15.207.88.234 "sudo ansible-playbook /opt/ecr.yml"
 
 
             
