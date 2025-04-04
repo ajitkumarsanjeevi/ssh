@@ -19,6 +19,9 @@ jobs:
         with:
           terraform_vers ion: 1.3.0 
 
+      - name: destroy
+        run: terraform destroy -auto-approve
+
 
       
       
