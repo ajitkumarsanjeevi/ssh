@@ -51,7 +51,7 @@ jobs:
         run: |
             set +e 
 
-            scripts(){
+            script="awscli.sh"
             usernames=("ubuntu" "ec2-user" "admin")   
           
             ips=($(aws ec2 describe-instances --region  ${{ env.Region }}  --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
@@ -63,9 +63,9 @@ jobs:
 
             ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null 
 
-            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt &> /dev/null
+            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$script"  "$username"@"$ip":/opt &> /dev/null
 
-            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/awscli.sh" &> /dev/null 
+            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$script" &> /dev/null 
 
             done
             done
