@@ -64,7 +64,7 @@ jobs:
            scripts=("awscli.sh" "docker.sh")
            for script in "${scripts[@]}"; do
            ansible "$script"
-
+           done
            
 
       - name: execute playbook
