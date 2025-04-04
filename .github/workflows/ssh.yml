@@ -45,11 +45,13 @@ jobs:
             mkdir -p ~/.ssh   
             echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
             chmod 600 ~/.ssh/id_rsa 
-
-
+ 
       - name: script
         run: |
-            set +e 
+            set +e
+
+            
+            ecr(){
 
             script="awscli.sh"
             usernames=("ubuntu" "ec2-user" "admin")   
@@ -63,13 +65,18 @@ jobs:
 
             ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null 
 
-            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$script"  "$username"@"$ip":/opt &> /dev/null
+            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa  "$1"  "$username"@"$ip":/opt &> /dev/null
 
-            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$script" &> /dev/null 
+            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/ansible.sh" &> /dev/null 
 
             done
             done
             }
+            scripts=("awscli.sh" "ansible.sh")
+            for script in ""${scripts[@]}"; do
+            ecr "$script" 
+            done
+            
             
             
 
