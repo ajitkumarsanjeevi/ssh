@@ -6,6 +6,8 @@
     name: nginx
   tasks:
   
+    - name: install awscli
+      command: awsclis.sh
     - name: install docker
       command: sudo bash docker.sh
       
