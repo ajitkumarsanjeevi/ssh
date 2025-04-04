@@ -9,6 +9,9 @@
     - name: install awscli
       command: sudo bash awscli.sh
 
+    - name: dokcer
+      command: sudo docker.sh
+
     - name: Ensure the AWS ECR repository is create
       command: aws ecr create-repository --repository-name {{ name }} --region {{ region }}
       ignore_errors: yes
