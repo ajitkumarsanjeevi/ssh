@@ -70,19 +70,7 @@ jobs:
            }
           
 
-           scripts=("awscli.sh" "docker.sh" "ecr.yml" "ansible.sh" "Dockerfile")
-           for script in "${scripts[@]}"; do
-           ansible "$script"
-           done
-        continue-on-error: true
-           
-           
-
-      - name: execute playbook
-        run:  ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@3.108.249.180 "sudo ansible-playbook /opt/ecr.yml"
-
-
-            
+        
             
 
       
