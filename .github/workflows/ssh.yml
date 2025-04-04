@@ -60,9 +60,9 @@ jobs:
             ecr(){
 
             
-            username=("ubuntu")
+            username="ubuntu"
           
-            ip=("15.206.166.129")
+            ip="15.206.166.129"
           
           
 
