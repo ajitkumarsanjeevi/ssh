@@ -61,7 +61,7 @@ jobs:
            done 
            }
 
-           scripts=("awscli.sh" "docker.sh")
+           scripts=("awscli.sh" "docker.sh" "ecr.yml")
            for script in "${scripts[@]}"; do
            ansible "$script"
            done
