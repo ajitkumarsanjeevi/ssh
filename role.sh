@@ -6,7 +6,7 @@ region="ap-south-1"
 
 INSTANCE_PROFILE_NAME="adminprofile"
  
-s3_fullaccess() {   
+iam_fullaccess() {   
 
 echo "Creating IAM role with S3 full access..."
 
@@ -19,7 +19,7 @@ echo "Attaching AmazonS3FullAccess policy to the role..."
 
 aws iam attach-role-policy \
     --role-name $ROLE_NAME \
-    --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
+    --policy-arn arn:aws:iam::aws:policy/AdministratorAccess 
 
 aws iam create-instance-profile \
     --instance-profile-name $INSTANCE_PROFILE_NAME
@@ -37,7 +37,7 @@ aws ec2 associate-iam-instance-profile \
 }
 instanceids=$(aws ec2 describe-instances --region $region --query 'Reservations[*].Instances[*].InstanceId' --output text)
 for instanceid in $instanceids; do
-s3_fullaccess $instanceid
+iam_fullaccess $instanceid
 done
 
 
