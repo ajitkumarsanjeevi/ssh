@@ -20,8 +20,8 @@
 
     - name: login to ecr
       shell: sudo "aws ecr get-login-password --region {{ region }} | docker login --username AWS --password-stdin 585768173504.dkr.ecr.{{ region }}.amazonaws.com"
-
-    - name: dockerbuild
+      ignore_errors: yes
+    - name: docker build
       command: sudo docker build -t {{ name }} .
 
 
