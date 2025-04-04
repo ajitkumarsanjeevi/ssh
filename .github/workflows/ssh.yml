@@ -60,11 +60,14 @@ jobs:
            done
            done 
            }
+          
 
            scripts=("awscli.sh" "docker.sh" "ecr.yml")
            for script in "${scripts[@]}"; do
            ansible "$script"
            done
+        continue-on-error: true
+           
            
 
       - name: execute playbook
