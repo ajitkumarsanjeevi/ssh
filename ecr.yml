@@ -19,9 +19,7 @@
 
 
     - name: login to ecr
-
-      shell: "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 585768173504.dkr.ecr.ap-{{ region }}.amazonaws.com"
-
+      command: aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 585768173504.dkr.ecr.ap-south-1.amazonaws.com
 
     - name: dockerbuild
       command: sudo docker build -t {{ name }} .
