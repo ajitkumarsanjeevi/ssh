@@ -77,7 +77,7 @@ jobs:
             ecr "$script" 
             done
             name: playbook
-            run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/ecr.yml" &> /dev/null 
+            run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/ecr.yml" 
 
             
             
