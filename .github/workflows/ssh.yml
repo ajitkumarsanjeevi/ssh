@@ -37,7 +37,7 @@ jobs:
         run: terraform plan
 
       - name: terraform apply  
-        run: terraform apply
+        run: terraform apply -auto-approve
 
       - name: role
         run: sh role.sh
