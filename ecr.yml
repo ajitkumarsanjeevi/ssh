@@ -10,30 +10,6 @@
       command: sudo bash awscli.sh
 
       
-    - name: install docker
-      command: sudo bash docker.sh
-      
-    - name: Ensure the AWS ECR repository is create
-      command: aws ecr create-repository --repository-name {{ name }} --region {{ region }}
-      ignore_errors: yes
-
-      
-
-    - name: login to ecr
-
-      shell: "aws ecr get-login-password --region {{ region }} | docker login --username AWS --password-stdin 585768173504.dkr.ecr.{{ region }}.amazonaws.com"
-
-
-    - name: dockerbuild
-      command: sudo docker build -t {{ name }} .
-
-
-
-    - name: tag
-      command: sudo docker tag nginx:latest 585768173504.dkr.ecr.{{ region }}.amazonaws.com/{{ name }}:latest
-
-
-    - name: push
-      command: sudo docker push 585768173504.dkr.ecr.{{ region }}.amazonaws.com/{{ name }}:latest
-
+    
+     
     
