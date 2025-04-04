@@ -5,7 +5,7 @@ on:
     branches: 
       - main   
    
-env:                        
+env:                         
   Region: ap-south-1
 jobs: 
   job1:  
