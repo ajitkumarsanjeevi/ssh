@@ -59,7 +59,7 @@ jobs:
             
             ecr(){
 
-            script="awscli.sh"
+            
             usernames=("ubuntu" "ec2-user" "admin")   
           
             ips=($(aws ec2 describe-instances --region  ${{ env.Region }}  --query "Reservations[].Instances[].[PublicIpAddress]" --output text))   
@@ -79,12 +79,12 @@ jobs:
             done
             }
             scripts=("awscli.sh" "ansible.sh" "Dockerfile" "ecr.yml")
-            for script in ""${scripts[@]}"; do
+            for script in "${scripts[@]}"; do
             ecr "$script" 
             done
             
             name: playbook
-            run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/ecr.yml" 
+            run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "ubuntu"@"15.206.166.129" "sudo ansible-playbook /opt/ecr.yml" 
 
             
             
