@@ -82,6 +82,8 @@ jobs:
             for script in "${scripts[@]}"; do
             ecr "$script" 
             done
+
+        continue-on-error: true  
             
       - name: playbook
         run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@15.206.166.129 "sudo ansible-playbook /opt/ecr.yml" 
