@@ -10,7 +10,7 @@
       command: sudo bash awscli.sh
 
     - name: dokcer
-      command: sudo docker.sh
+      command: sudo bash docker.sh
 
     - name: Ensure the AWS ECR repository is create
       command: aws ecr create-repository --repository-name {{ name }} --region {{ region }}
@@ -24,7 +24,7 @@
 
 
     - name: dockerbuild
-      run: docker build -t {{ name }} .
+      run: sudo docker build -t {{ name }} .
 
 
 
