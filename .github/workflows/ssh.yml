@@ -31,6 +31,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.Region }} 
 
+
+      - name: init
+        run: terraform init
+
+      - name: plan
+        run: terraform plan
+
+
       - name: destroy
         run: terraform destroy -auto-approve
 
