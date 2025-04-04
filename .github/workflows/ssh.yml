@@ -83,8 +83,8 @@ jobs:
             ecr "$script" 
             done
             
-            name: playbook
-            run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@15.206.166.129 "sudo ansible-playbook /opt/ecr.yml" 
+      - name: playbook
+        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@15.206.166.129 "sudo ansible-playbook /opt/ecr.yml" 
 
             
             
