@@ -7,7 +7,7 @@
   tasks:
   
     - name: install awscli
-      command: awsclis.sh
+      command: awscli.sh
     - name: install docker
       command: sudo bash docker.sh
       
