@@ -19,7 +19,7 @@
 
 
     - name: login to ecr
-      command: aws ecr get-login-password --region {{ region }} | docker login --username AWS --password-stdin 585768173504.dkr.{{ region }}.amazonaws.com
+      shell: sudo "aws ecr get-login-password --region {{ region }} | docker login --username AWS --password-stdin 585768173504.dkr.ecr.{{ region }}.amazonaws.com"
 
     - name: dockerbuild
       command: sudo docker build -t {{ name }} .
@@ -28,12 +28,12 @@
 
     - name: tag
       command: sudo docker tag nginx:latest 585768173504.dkr.ecr.ap-south-1.amazonaws.com/{{ name }}:latest
-      command: sudo docker tag nginx:latest 585768173504.dkr.ecr.{{ region }}.amazonaws.com/{{ name }}:latest
+      
 
 
     - name: push
       command: sudo docker push 585768173504.dkr.ecr.{{ region }}.amazonaws.com/{{ name }}:latest
-      command: sudo docker push 585768173504.dkr.ecr.{{ region }}.amazonaws.com/{{ name }}:latest
+      
 
 
 
