@@ -76,13 +76,7 @@ jobs:
             done
         continue-on-error: true
 
-         # Send failure notification to Slack
-      - name: Notify Slack on Failure
-        if: failure()
-        uses: 8398a7/action-slack@v3
-        with:
-          slack_webhook_url: https://app.slack.com/client/T08J6B5CFPG/C08HYH5EFNK
-          message: 'CI Build Failed! 😞'
+         
 
       - name: ansible_playbook
         run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@43.205.209.211 "sudo ansible-playbook /opt/ecr.yml" 
