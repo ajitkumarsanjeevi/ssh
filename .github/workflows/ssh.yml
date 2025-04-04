@@ -34,9 +34,7 @@ jobs:
           aws-region: ${{ env.Region }} 
 
 
-      - name: role
-        run: sh role.sh
-        continue-on-error: true
+    
 
 
       
@@ -53,7 +51,7 @@ jobs:
         run: |
           set +e
            
-           ansible(){
+           
            usernames=("ubuntu" "ec2-user" "admin") 
            ips=($(aws ec2 describe-instances --region ap-south-1 --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
           
@@ -63,11 +61,11 @@ jobs:
  
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"               
            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$1"  "$username"@"$ip":/opt
-           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/ansible.sh" 
+        
            
            done
            done 
-           }
+           
           
 
         
