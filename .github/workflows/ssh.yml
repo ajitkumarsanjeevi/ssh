@@ -63,10 +63,14 @@ jobs:
            for ip in "${ips[@]}"; do
  
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"               
-           scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$script"  "$username"@"$ip":/opt         
-           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash $script"              
+           scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$1"  "$username"@"$ip":/opt                      
+           
            done
            done 
+
+           scripts=("awscli.sh" "docker.sh")
+           for script in "${scripts[@]}"; do
+           ansible "$script"
 
       - name: execute playbook
         run:  ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@ipadress "sudo ansible-playbook /opt/ecr.yml"
