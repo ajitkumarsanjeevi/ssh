@@ -72,8 +72,7 @@ jobs:
 
             ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/ansible.sh" &> /dev/null 
 
-            done
-            done
+            
             }
             scripts=("awscli.sh" "ansible.sh" "Dockerfile" "ecr.yml" "docker.sh")
             for script in "${scripts[@]}"; do
