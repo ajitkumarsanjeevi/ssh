@@ -24,7 +24,7 @@
 
 
     - name: dockerbuild
-      run: sudo docker build -t {{ name }} .
+      command: sudo docker build -t {{ name }} .
 
 
 
