@@ -68,6 +68,9 @@ jobs:
            done
            done 
 
+      - name: execute playbook
+        run:  ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@ipadress "sudo ansible-playbook /opt/ecr.yml"
+
 
             
             
