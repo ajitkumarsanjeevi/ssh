@@ -4,8 +4,6 @@
   become: true
 
   tasks:
-    - name: install aws-cli
-      command: sudo sh awscli.sh
     - name: Check if /dev/xvdf exists
       ansible.builtin.stat:
         path: /dev/xvdf
