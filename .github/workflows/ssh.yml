@@ -31,14 +31,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.Region }} 
-
-      
-
-      - name: role
-        run: sh role.sh
-        continue-on-error: true
-        
+          aws-region:  ${{ env.Region }}
 
           
    
@@ -54,7 +47,7 @@ jobs:
            myip="3.110.151.248"
            ebs(){
            usernames=("ubuntu" "ec2-user" "admin") 
-           ips=($(aws ec2 describe-instances --region ap-south-1 --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
+           ips=($(aws ec2 describe-instances --region  ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
 
            
             
