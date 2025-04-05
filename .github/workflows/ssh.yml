@@ -63,7 +63,7 @@ jobs:
  
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"               
            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$1"  "$username"@"$ip":/opt
-           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$1"
+           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/ansible.sh"
 
            break
            fi
@@ -72,9 +72,9 @@ jobs:
            }
           
            
-           scripts=("ansible.sh")
+           scripts=("ansible.sh" "ebs.yml")
            for script in "${scripts[@]}"; do
-           ebs "$script"
+           ebs "$script"  
            done
         continue-on-error: true 
 
