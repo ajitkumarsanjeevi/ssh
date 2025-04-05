@@ -47,7 +47,8 @@ jobs:
 
       - name: ssh 
         run: |
-         
+        
+         export ANSIBLE_HOST_KEY_CHECKING=False 
          ansible-playbook  -i hosts s3.yml
             
  
