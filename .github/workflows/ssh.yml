@@ -46,27 +46,34 @@ jobs:
             chmod 600 ~/.ssh/id_rsa 
 
       - name: ssh 
-        run: |
+        run: | 
 
 
            set +e
-           efs(){
+           script="awscli.sh"
            usernames=("ubuntu" "ec2-user" "admin") 
            ips=($(aws ec2 describe-instances --region  ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
           
            for username in "${usernames[@]}"; do
  
            for ip in "${ips[@]}"; do
- 
+
+           if [[ "$ip == "       " ]]; then
+
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null              
-           scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa file.sh  "$username"@"$ip":/opt         &> /dev/null
-           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash file.sh"   &> /dev/null             
+           scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$script"  "$username"@"$ip":/opt         &> /dev/null
+           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash $script"   &> /dev/null
+           
+           break
+           
+           fi
+           
            done
            done 
-           scripts=("file.sh")
-           for script in "${scripts[@]}"; do
-           efs "$script"
-           done
+           
+           
+           
+           
            
 
       
