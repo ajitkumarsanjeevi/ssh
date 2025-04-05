@@ -34,7 +34,7 @@ jobs:
           aws-region:  ${{ env.Region }}
 
       - name: Set up Ansible
-        uses: alex-oleshkevich/setup-ansible@v1.0.0 
+        uses: ansible/ansible-setup@v1 
 
       - name: Install dependencies
         run: |
