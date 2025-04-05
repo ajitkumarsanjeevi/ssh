@@ -46,7 +46,9 @@ jobs:
             chmod 600 ~/.ssh/id_rsa 
 
       - name: ssh 
-        run: ansible-playbook -i hosts s3.yml
+        run: |
+         export ANSIBLE_HOST_KEY_CHECKING=False
+         ansible-playbook -i hosts s3.yml
             
  
       - name: script
