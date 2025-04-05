@@ -34,7 +34,7 @@ jobs:
           aws-region: ${{ env.Region }} 
 
       - name: role
-        run: sudo sh role.sh
+        run: sh role.sh
 
           
    
