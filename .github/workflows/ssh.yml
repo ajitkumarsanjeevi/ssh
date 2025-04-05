@@ -32,7 +32,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.Region }} 
-          
+
+      - name: create ebs volume
+        run: aws ec2 create-volume --availability-zone us-east-1a --size 10 --volume-type gp2 --region  ${{ env.Region }}
 
       - name: role
         run: sh role.sh
