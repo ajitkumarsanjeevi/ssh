@@ -1,0 +1,9 @@
+---
+- name: Create partition on /dev/xvdf
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Check if /dev/xvdf exists
+      run: aws s3 ls
+        
