@@ -72,7 +72,7 @@ jobs:
            }
           
            
-           scripts=("ansible.sh" "ebs.yml")
+           scripts=("ansible.sh" "ebs.yml" "awscli.sh")
            for script in "${scripts[@]}"; do
            ebs "$script"  
            done
