@@ -34,7 +34,7 @@ jobs:
           aws-region:  ${{ env.Region }}
 
       - name: ansible
-        uses: shivam5992/ansible-setuP@v1
+        uses: shivam5992/ansible-setup@v1
         with:
          ansible_version: 2.10.3
 
