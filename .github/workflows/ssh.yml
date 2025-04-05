@@ -33,14 +33,17 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:  ${{ env.Region }}
 
-      - name: Set up Ansible
-        uses: ansible/ansible-setup@v1 
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-      - name: Install dependencies
+      # Step 3: Install pip and Ansible 2.3.23.0
+      - name: Install Ansible 2.3.23.0
         run: |
-         sudo apt update
-         sudo apt install -y python3-pip
-         pip3 install -r requirements.txt 
+          python -m pip install --upgrade pip  
+          pip install ansible==2.3.23.0  
+
 
           
    
