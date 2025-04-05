@@ -48,7 +48,7 @@ jobs:
       - name: ssh 
         run: |
          export ANSIBLE_HOST_KEY_CHECKING=False
-         ansible-playbook -i StrictHostKeyChecking=no -i hosts s3.yml
+         ansible-playbook  -i hosts s3.yml
             
  
       - name: script
