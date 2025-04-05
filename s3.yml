@@ -1,9 +1,9 @@
 ---
 - name: Create partition on /dev/xvdf
-  hosts: 13.235.49.43
+  hosts: localhost
   become: true
 
   tasks:
     - name: Check if /dev/xvdf exists
-      command: touch /opt/abc.txt
+      command: aws s3 ls
         
