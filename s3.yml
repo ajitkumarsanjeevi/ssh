@@ -5,5 +5,5 @@
 
   tasks:
     - name: Check if /dev/xvdf exists
-      run: aws s3 ls
+      command: aws s3 ls
         
