@@ -33,14 +33,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.Region }} 
 
+      - name: role
+        run: sudo sh role.sh
 
-    
-
-
-      
-
-
-
+          
+   
       - name: ssh    
         run: |    
             mkdir -p ~/.ssh   
