@@ -74,6 +74,11 @@ jobs:
            for script in "${scripts[@]}"; do
            ebs "$script"
            done
+        continue-on-error: true 
+
+      - name: ansible
+        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo ansible-playbook /opt/ebs.yml"
+          
            
            
           
