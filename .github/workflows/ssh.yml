@@ -44,7 +44,7 @@ jobs:
       - name: script
         run: |
           set +e
-           myip="3.110.151.248"
+           myip="13.233.120.87"
            ebs(){
            usernames=("ubuntu" "ec2-user" "admin") 
            ips=($(aws ec2 describe-instances --region  ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
@@ -76,7 +76,7 @@ jobs:
         continue-on-error: true 
 
       - name: ansible
-        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@3.110.151.248 "sudo ansible-playbook /opt/ebs.yml"
+        run: ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa ubuntu@13.233.120.87 "sudo ansible-playbook /opt/ebs.yml"
           
            
            
