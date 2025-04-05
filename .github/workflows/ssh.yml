@@ -58,7 +58,7 @@ jobs:
  
            for ip in "${ips[@]}"; do
 
-           if [[ "$ip == "       " ]]; then
+           if [[ "$ip" == "       " ]]; then
 
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null              
            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$script"  "$username"@"$ip":/opt         &> /dev/null
