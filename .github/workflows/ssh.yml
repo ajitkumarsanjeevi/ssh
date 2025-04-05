@@ -34,7 +34,7 @@ jobs:
           aws-region:  ${{ env.Region }}
 
       - name: ansible
-        run: ansibl-playbook s3.yml
+        run: ansible-playbook s3.yml
         env:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
