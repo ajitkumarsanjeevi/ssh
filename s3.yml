@@ -1,6 +1,6 @@
 ---
 - name: Create partition on /dev/xvdf
-  hosts: localhost
+  hosts: 13.235.49.43
   become: true
 
   tasks:
