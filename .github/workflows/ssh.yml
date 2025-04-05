@@ -33,6 +33,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:  ${{ env.Region }}
 
+      - name: ansible
+        uses: shivam5992/ansible-setuP@v1
+        with:
+         ansible_version: 2.10.3
+
           
    
       - name: ssh    
