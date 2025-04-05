@@ -38,7 +38,7 @@ aws ec2 associate-iam-instance-profile \
 instanceids=$(aws ec2 describe-instances --region $region --query 'Reservations[*].Instances[*].InstanceId' --output text)
 for instanceid in $instanceids; do
 
-if [[ "$instanceid == "    "]; then
+if [[ "$instanceid == "i-0cd9c04c8ac8f0bd9"]; then
 
 iam_fullaccess $instanceid
 break
