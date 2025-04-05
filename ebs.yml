@@ -1,0 +1,50 @@
+---
+- name: Create partition on /dev/xvdf
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Check if /dev/xvdf exists
+      ansible.builtin.stat:
+        path: /dev/xvdf
+      register: disk_stat
+
+    - name: Create a partition on /dev/xvdf
+      community.general.parted:
+        device: /dev/xvdf
+        number: 1
+        part_type: primary
+        part_start: 1MiB
+        part_end: 100%
+        state: present
+      when: disk_stat.stat.exists == true
+
+    - name: Verify the partition is created
+      ansible.builtin.command:
+        cmd: "parted /dev/xvdf print"
+      register: parted_output
+      when: disk_stat.stat.exists == true
+
+    - name: Show partition creation output
+      ansible.builtin.debug:
+        var: parted_output.stdout
+
+    - name: mkdir
+      command: mkdir /opt/data
+      ignore_errors: yes
+
+    - name: make file system
+      command: sudo mkfs.ext4 /dev/xvdf1
+      ignore_errors: yes
+    - name: mount file system
+      command: sudo mount /dev/xvdf1 /opt/data
+      ignore_errors: yes
+
+
+    - name: Add a line to a file
+      ansible.builtin.lineinfile:
+        path: /etc/fstab
+        line: /dev/xvdf1 /opt/data ext4 defaults 0 0
+        state: present
+                               
+                         
