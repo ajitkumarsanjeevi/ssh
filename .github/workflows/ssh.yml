@@ -76,6 +76,13 @@ jobs:
            done
            done 
 
+      - name: Send SNS Notification
+        run: |
+          aws sns publish \
+            arn:aws:sns:ap-south-1:585768173504:git:githubactons \
+            --message "Deployment successful for commit $GITHUB_SHA" \
+            --region ap-south-1
+
  
         
            
