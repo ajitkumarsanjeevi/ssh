@@ -57,7 +57,7 @@ jobs:
 
          for reg in "$regions"; do
 
-         stop_instance "$reg"; do
+         stop_instance "$reg"
 
          done
 
