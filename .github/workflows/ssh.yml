@@ -76,14 +76,7 @@ jobs:
            done
            done 
 
-      - name: Send SNS Notification
-        run: |
-             aws sns publish \
-             --topic-arn "arn:aws:sns:ap-south-1:585768173504:githubactions" \
-             --message "Your message here" \
-             --region ap-south-1
- 
-        
+  
            
            
            
