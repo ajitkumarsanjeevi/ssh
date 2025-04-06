@@ -5,4 +5,4 @@
 
   tasks:
     - name: install awscli
-      command: sh awscli.sh
+      command: sudo sh /opt/awscli.sh
