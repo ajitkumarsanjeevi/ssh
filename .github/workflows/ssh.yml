@@ -45,6 +45,13 @@ jobs:
             echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
             chmod 600 ~/.ssh/id_rsa 
 
+      - name: ansilbe
+        run: |
+            export ANSIBLE_HOST_KEY_CHECKING=False
+            ansible -i hosts ebs.yml
+            
+
+
       - name: ssh 
         run: | 
 
