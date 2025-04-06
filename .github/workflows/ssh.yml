@@ -39,7 +39,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:  ${{ env.Region }}
         run: |
-          sh lis.sh
+          sh list.sh
 
           
 
