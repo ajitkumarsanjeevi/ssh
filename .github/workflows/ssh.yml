@@ -80,6 +80,10 @@ jobs:
             echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
             chmod 600 ~/.ssh/id_rsa 
 
+      - name: playbook
+        run: |
+            export ANSIBLE_HOST_KEY_CHEKING=False
+
         
            
            
