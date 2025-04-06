@@ -68,17 +68,13 @@ jobs:
 
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null              
            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$script"  "$username"@"$ip":/opt         &> /dev/null
+           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/awsli.sh" &> /dev/null  
 
                 
            done
            done 
 
-        continue-on-error: true   
-           
-      - name: ansilbe
-        run: |
-            export ANSIBLE_HOST_KEY_CHECKING=False
-            ansible-playbook -i hosts awscli.yml
+        
            
            
            
