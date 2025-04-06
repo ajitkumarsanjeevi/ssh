@@ -39,7 +39,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:  ap-south-1
         run: |
-          sh list.sh
+          chmod +x ./list.sh
+          sh ./list.sh
 
           
 
