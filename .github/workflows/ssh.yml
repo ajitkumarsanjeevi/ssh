@@ -37,7 +37,7 @@ jobs:
         run: |
          stop_instance(){
 
-         instanceids=$(aws ec2 describe-instances --region "$1" --query "Reservations[].Instances[].InstanceId" --output text)
+         instanceids=($(aws ec2 describe-instances --region "$1" --query "Reservations[].Instances[].InstanceId" --output text))
 
          for instanceid in "$instanceids"; do
 
@@ -53,9 +53,9 @@ jobs:
 
          stop)
 
-         regions=$(aws ec2 describe-regions --query "Regions[].RegionName" --output text)
+         regions=($(aws ec2 describe-regions --query "Regions[].RegionName" --output text))
 
-         for reg in "$regions"; do
+         for reg in "${regions[@]}"; do
 
          stop_instance "$reg"
 
