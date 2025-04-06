@@ -37,9 +37,9 @@ jobs:
         run: |
          stop_instance(){
 
-         instaneids=$(aws ec2 describe-instances --region "$1" --query "Reservations[].Instances[].InstanceId" --output text)
+         instanceids=$(aws ec2 describe-instances --region "$1" --query "Reservations[].Instances[].InstanceId" --output text)
 
-         for instanceid in "$instanceids"; do 
+         for instanceid in "$instanceids"; do
 
          aws ec2 stop-instances --region "$1" --instance-ids "$instanceid" 
 
