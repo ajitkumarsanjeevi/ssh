@@ -72,63 +72,7 @@ jobs:
            done
            done 
 
-  job2:  
-    runs-on: ubuntu-latest 
-    steps: 
-      - name: Checkout code
-        uses: actions/checkout@v4 
-      
-
-      - name: ssh    
-        run: |    
-            mkdir -p ~/.ssh   
-            echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
-            chmod 600 ~/.ssh/id_rsa 
-
-      - name: playbook
-        run: |
-            export ANSIBLE_HOST_KEY_CHEKING=False
-  job3:  
-    runs-on: ubuntu-latest 
-    steps: 
-      - name: Checkout code
-        uses: actions/checkout@v4 
-      
-
-      - name: ssh    
-        run: |    
-            mkdir -p ~/.ssh   
-            echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
-            chmod 600 ~/.ssh/id_rsa 
-
-      - name: playbook
-        run: |
-            export ANSIBLE_HOST_KEY_CHEKING=False
-
-
-
-  job4:  
-    runs-on: ubuntu-latest 
-    steps: 
-      - name: Checkout code
-        uses: actions/checkout@v4 
-      
-
-      - name: ssh    
-        run: |    
-            mkdir -p ~/.ssh   
-            echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
-            chmod 600 ~/.ssh/id_rsa 
-
-      - name: playbook
-        run: |
-            export ANSIBLE_HOST_KEY_CHEKING=False
-         
-
-
-
-            
-
+ 
         
            
            
