@@ -33,55 +33,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:  ${{ env.Region }}
 
-      - name: Configure AWS Credentials
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION:  ap-south-1
-        run: |
-          chmod +x ./list.sh
-          sh ./list.sh
-
-          
-
-      - name: stop
-        run: |
-         stop_instance(){
-
-         instanceids=($(aws ec2 describe-instances --region "$1" --query "Reservations[].Instances[].InstanceId" --output text))
-
-         for instanceid in "$instanceids"; do
-
-         aws ec2 stop-instances --region "$1" --instance-ids "$instanceid" 
-
-         done
-
-         }
-
-         action="stop"
-
-         case "$action" in
-
-         stop)
-
-         regions=($(aws ec2 describe-regions --query "Regions[].RegionName" --output text))
-
-         for reg in "${regions[@]}"; do
-
-         stop_instance "$reg"
-
-         done
-
-         ;;
-
-         *)
-
-         "notfound"
- 
-         ;;
- 
-         esac
-
+      
 
     
 
@@ -95,10 +47,7 @@ jobs:
             echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
             chmod 600 ~/.ssh/id_rsa 
 
-      - name: ansilbe
-        run: |
-            export ANSIBLE_HOST_KEY_CHECKING=False
-            ansible-playbook -i hosts ebs.yml
+      
             
 
 
@@ -123,6 +72,11 @@ jobs:
                 
            done
            done 
+           
+      - name: ansilbe
+        run: |
+            export ANSIBLE_HOST_KEY_CHECKING=False
+            ansible-playbook -i hosts ebs.yml
            
            
            
