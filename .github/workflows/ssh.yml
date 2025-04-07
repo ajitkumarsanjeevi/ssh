@@ -36,7 +36,7 @@ jobs:
 
       - name: vars
         run: |
-            echo "aws-access-key-id: {{ secrets.AWS_ACCESS_KEY_ID }}" >> ./vars.yml
+            echo "aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}" >> ./vars.yml
             echo "aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ./vars.yml
             echo "aws-region: ap-south-1" >> ./vars.yml
             
