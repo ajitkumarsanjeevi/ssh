@@ -33,11 +33,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:  ${{ env.Region }}
 
-      - name: ls
-        run: sh list.sh
-
-      - name: verion
-        run: terraform init
+      
 
       
 
@@ -50,8 +46,7 @@ jobs:
             mkdir -p ~/.ssh   
             echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
             chmod 600 ~/.ssh/id_rsa 
-      - name: version
-        run: terraform --version
+    
       
             
 
@@ -61,7 +56,7 @@ jobs:
 
 
            set +e
-           script="awscli.sh"
+           script="file.sh"
            usernames=("ubuntu" "ec2-user" "admin") 
            ips=($(aws ec2 describe-instances --region  ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
           
@@ -73,7 +68,7 @@ jobs:
 
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt" &> /dev/null              
            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$script"  "$username"@"$ip":/opt         &> /dev/null
-           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo sh /opt/awsli.sh" &> /dev/null  
+           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$script" &> /dev/null  
 
                 
            done
