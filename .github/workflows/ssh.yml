@@ -34,7 +34,7 @@ jobs:
           aws-region:  ${{ env.Region }}
 
       - name: ls
-        run: sh role.sh
+        run: sh list.sh
 
       - name: verion
         run: terraform init
