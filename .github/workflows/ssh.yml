@@ -33,6 +33,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:  ${{ env.Region }}
 
+      - name: ls
+        run: sh role.sh
+
       - name: verion
         run: terraform init
 
