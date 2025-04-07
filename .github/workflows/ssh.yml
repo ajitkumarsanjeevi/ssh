@@ -79,6 +79,12 @@ jobs:
            for script in "${scripts[@]}"; do
            ansible "$script"
            done
+
+      - name: ansible
+        run: |
+           ansible-playbook -i hosts ebs.yml
+           
+                  
            
 
   
