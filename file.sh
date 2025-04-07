@@ -2,7 +2,7 @@
                                                                             
 ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')
 
-fsid=arn:aws:elasticfilesystem:ap-south-1:585768173504:file-system/fs-0cea3a31d8923e278
+fsid=fs-0cea3a31d8923e278.efs.ap-south-1.amazonaws.com
 
 path="/efs"
                                                
