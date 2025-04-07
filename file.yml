@@ -1,0 +1,8 @@
+---
+- name: Create partition on /dev/xvdf
+  hosts: all
+  become: true
+
+  tasks:
+    - name: createfile
+      command: sudo touch /opt/abc.txt
