@@ -1,11 +1,15 @@
 ---
-- name: Configure NGINX and restart the service
+- name: List all S3 Buckets
   hosts: localhost
-  become: yes
-
+  gather_facts: no
+  vars_files:
+    - vars.yml  
   tasks:
-    - name: Install NGINX
-      apt:
-        name: nginx
-        state: present
-     
+    - name: List all S3 Buckets
+      community.aws.s3_bucket_facts:
+        region: "{{ aws_region }}"
+        aws-access-key: "{{ aws_access_key }}"
+        aws-secret-key: "{{ aws_secret_key }}"
+      register: s3_buckets
+
+    
