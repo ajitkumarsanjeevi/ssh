@@ -7,9 +7,9 @@
   tasks:
     - name: List all S3 Buckets
       community.aws.s3_bucket_facts:
-        region: "{{ aws_region }}"
-        aws-access-key: "{{ aws_access_key }}"
-        aws-secret-key: "{{ aws_secret_key }}"
+        region: "{{ aws-region }}"
+        aws-access-key: "{{ aws-accesskey }}"
+        aws-secret-key: "{{ aws-secret-key }}"
       register: s3_buckets
 
     
