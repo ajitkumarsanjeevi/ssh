@@ -2,7 +2,7 @@
                                                                             
 ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')
 
-fsid="               "
+fsid=$(aws efs describe-file-systems --region "$REGION" --query "FileSystems[0].FileSystemId" --output text)
 
 path="/efs"
                                                
