@@ -85,7 +85,7 @@ jobs:
       - name: ansible
         run: |
            export ANSIBLE_HOST_KEY_CHEKING=False
-           ansible-playbook -i hosts ebs.yml
+           ansible-playbook -i hosts file.yml
            
                   
            
