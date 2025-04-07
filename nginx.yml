@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: no
   vars_files:
-    - vars.yml  
+    - ./vars.yml  
   tasks:
     - name: List all S3 Buckets
       community.aws.s3_bucket_facts:
