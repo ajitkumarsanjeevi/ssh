@@ -75,7 +75,7 @@ jobs:
            done 
 
            }
-
+           scripts=("file.sh")
            for script in "${scripts[@]}"; do
            ansible "$script"
            done
