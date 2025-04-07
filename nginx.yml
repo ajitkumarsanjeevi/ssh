@@ -8,7 +8,7 @@
     - name: List all S3 Buckets
       command: aws s3 ls
         region: "{{ aws-region }}"
-        aws-access-key: "{{ aws-accesskey }}"
+        aws-access-key: "{{ aws-access-key }}"
         aws-secret-key: "{{ aws-secret-key }}"
       register: s3_buckets
 
