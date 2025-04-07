@@ -61,7 +61,7 @@ jobs:
            ips=($(aws ec2 describe-instances --region  ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
           
            for username in "${usernames[@]}"; do
- 
+  
            for ip in "${ips[@]}"; do
 
            
