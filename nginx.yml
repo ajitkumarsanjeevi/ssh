@@ -6,7 +6,7 @@
     - vars.yml  
   tasks:
     - name: List all S3 Buckets
-      community.aws.s3_bucket_facts:
+      command: aws s3 ls
         region: "{{ aws-region }}"
         aws-access-key: "{{ aws-accesskey }}"
         aws-secret-key: "{{ aws-secret-key }}"
