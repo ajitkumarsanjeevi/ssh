@@ -44,6 +44,9 @@ jobs:
       - name: docker
         run: docker --version
 
+      - name: ansible
+        run: ansible --version
+
 
      
             
