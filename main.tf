@@ -113,7 +113,7 @@ resource "aws_instance" "ec2_instances" {
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
 
   tags = {
-    Name = instance-1
+    Name = 'instance-1'
   }
 }
 
