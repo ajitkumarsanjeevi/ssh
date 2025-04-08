@@ -104,16 +104,16 @@ resource "aws_security_group" "efs-sg" {
 
 resource "aws_instance" "ec2_instances" {
 
-  count         = length(var.ec2_instances)
+  
   ami           = "ami-0e35ddab05955cf57"
   instance_type = "t2.micro"
   key_name      = "splunk"
-  subnet_ids     = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
-  availability_zones = var.availbaility_zones[count.index]
+  subnet_ids    = aws_subnet.public_subnet_1
+  availability_zone = var.availbaility_zones[0]
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
 
   tags = {
-    Name = var.ec2_instances[count.index]
+    Name = instance-1
   }
 }
 
