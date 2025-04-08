@@ -109,7 +109,7 @@ resource "aws_instance" "ec2_instances" {
   instance_type = "t2.micro"
   key_name      = "splunk"
   subnet_ids    = aws_subnet.public_subnet_1
-  availability_zone = var.availbaility_zones[0]
+  availability_zone = var.availability_zones[0]
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
 
   tags = {
