@@ -36,7 +36,13 @@ jobs:
           aws-region:  ${{ env.Region }}
 
       - name: init
-        run: terraform init    
+        run: terraform init 
+
+      - name: git
+        run: git -version
+
+      - name: docker
+        run: docker -version
 
 
      
