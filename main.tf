@@ -133,9 +133,7 @@ resource "aws_efs_mount_target" "mount_target_1" {
   subnet_id      = aws_subnet.public_subnet_1.id
   security_groups = [aws_security_group.efs-sg.id]
 
-  tags = {
-    Name = "mount_target_1"
-  }
+  
 }
 
 
