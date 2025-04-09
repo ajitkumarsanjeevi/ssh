@@ -20,8 +20,8 @@ variable "egress-rules" {
 }
 
 variable "subnets" {
-type = list(string)
-default = ["aws_subnet.public_subnet_1.id", "aws_subnet.public_subnet_2.id"]
+
+default = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
 }
 
 variable "ec2_instances" {
