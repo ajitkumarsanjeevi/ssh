@@ -1,5 +1,5 @@
 provider "aws" { 
-region = "ap-south-1"    
+region = "ap-south-1   
 }
 
 
@@ -114,6 +114,27 @@ resource "aws_instance" "ec2_instances" {
 
   tags = {
     Name = "instance-1"
+  }
+}
+
+# Step 4: Create an EFS File System
+resource "aws_efs_file_system" "my_efs" {
+  creation_token = "my-efs"
+  performance_mode = "generalPurpose"
+  encrypted = true
+  tags = {
+    Name = "my-efs"
+  }
+}
+
+# Step 5: Create EFS Mount Targets for Subnets
+resource "aws_efs_mount_target" "mount_target_1" {
+  file_system_id = aws_efs_file_system.my_efs.id
+  subnet_id      = aws_subnet.public_subnet_1.id
+  security_groups = [aws_security_group.efs_sg.id]
+
+  tags = {
+    Name = "mount_target_1"
   }
 }
 
