@@ -23,9 +23,10 @@ variable "subnet_ids" {
 
   default = ["subnet-0c847ba2112e16310", "subnet-07d1742f3544a89c7"]
 }
-variable instance_names
+variable "instance_names" {
 type = list(string)
 default = ["instance-1, "instance-2", "instance-3"]
+}
 
 
 
