@@ -104,7 +104,7 @@ resource "aws_security_group" "efs-sg" {
 
 resource "aws_instance" "ec2_instances" {
 
-  count         =  1
+  count         =  0
   ami           = "ami-0e35ddab05955cf57"
   instance_type = "t2.micro"
   key_name      = "splunk"
@@ -117,24 +117,6 @@ resource "aws_instance" "ec2_instances" {
   }
 }
 
-# Step 4: Create an EFS File System
-resource "aws_efs_file_system" "my_efs" {
-  creation_token = "my-efs"
-  performance_mode = "generalPurpose"
-  encrypted = true
-  tags = {
-    Name = "my-efs"
-  }
-}
-
-# Step 5: Create EFS Mount Targets for Subnets
-resource "aws_efs_mount_target" "mount_target_1" {
-  file_system_id = aws_efs_file_system.my_efs.id
-  subnet_id      = aws_subnet.public_subnet_1.id
-  security_groups = [aws_security_group.efs-sg.id]
-
-  
-}
 
 
 
