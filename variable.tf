@@ -25,7 +25,7 @@ variable "subnet_ids" {
 }
 variable "instance_names" {
 type = list(string)
-default = ["instance-1, "instance-2", "instance-3"]
+default = ["instance-1", "instance-2", "instance-3"]
 }
 
 
