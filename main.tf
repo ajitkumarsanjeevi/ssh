@@ -130,7 +130,7 @@ resource "aws_ebs_volume" "data_volume" {
 resource "aws_volume_attachment" "ebs_att" {
   device_name = "/dev/sdf"
   volume_id   = aws_ebs_volume.data_volume.id
-  instance_id = aws_instance.web.id
+  instance_id = aws_instance.ec2_instances.id
   force_detach = true
 }
 
