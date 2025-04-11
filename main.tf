@@ -104,17 +104,34 @@ resource "aws_security_group" "efs-sg" {
 
 resource "aws_instance" "ec2_instances" {
 
-  count         =  3
+  count         =  1
   ami           = "ami-0e35ddab05955cf57"
   instance_type = "t2.micro"
   key_name      = "splunk"
-  subnet_id    = element(var.subnet_ids, count.index)
-  availability_zone = element(var.availability_zones, count.index)
+  subnet_id    = 
+  availability_zone = "ap-south-1"
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
 
   tags = {
-    Name = element(var.instance_names, count.index)
+    Name = "instance-1"
   }
+}
+# 2. Create EBS Volume
+resource "aws_ebs_volume" "data_volume" {
+  availability_zone = aws_instance.web.availability_zone
+  size              = 10                  
+  type              = "gp3"              
+  tags = {
+    Name = "WebDataVolume"
+  }
+}
+
+# 3. Attach EBS Volume to EC2
+resource "aws_volume_attachment" "ebs_att" {
+  device_name = "/dev/sdf"
+  volume_id   = aws_ebs_volume.data_volume.id
+  instance_id = aws_instance.web.id
+  force_detach = true
 }
 
 
