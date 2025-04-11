@@ -118,7 +118,7 @@ resource "aws_instance" "ec2_instances" {
 }
 # 2. Create EBS Volume
 resource "aws_ebs_volume" "data_volume" {
-  availability_zone = aws_instance.web.availability_zone
+  availability_zone = "ap-south-1b"
   size              = 10                  
   type              = "gp3"              
   tags = {
