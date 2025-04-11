@@ -42,8 +42,7 @@ jobs:
       - name: apply
         run: terraform apply -auto-approve
 
-      - name: destroy
-        run: terraform destroy -auto-approve
+      
       
 
       
@@ -102,7 +101,7 @@ jobs:
            done 
 
            }
-           scripts=("file.sh")
+           scripts=("ebs.yml")
            for script in "${scripts[@]}"; do
            ansible "$script"
            done
