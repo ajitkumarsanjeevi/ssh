@@ -107,7 +107,7 @@ resource "aws_instance" "ec2_instances" {
   instance_type = "t2.micro"
   key_name      = "splunk"
   subnet_id    = aws_subnet.public_subnet_1.id
-  availability_zone = "ap-south-1"
+  availability_zone = "ap-south-1a"
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
 
   tags = {
@@ -116,7 +116,7 @@ resource "aws_instance" "ec2_instances" {
 }
 # 2. Create EBS Volume
 resource "aws_ebs_volume" "data_volume" {
-  availability_zone = "ap-south-1b"
+  availability_zone = "ap-south-1a"
   size              = 10                  
   type              = "gp3"              
   tags = {
