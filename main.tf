@@ -101,21 +101,4 @@ resource "aws_security_group" "efs-sg" {
   }
 }	
 
-resource "aws_instance" "example" {
-  for_each = var.ec2_instances
-
-  ami                = each.value.ami_id
-  instance_type      = each.value.instance_type
-  key_name           = each.value.key_name
-  subnet_id          = each.value.subnet_id
-  availability_zone  = each.value.availability_zone  
-
-  tags = {
-    Name = each.key
-  }
-}
-
-
-
-
 
