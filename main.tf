@@ -110,7 +110,7 @@ resource "aws_instance" "example" {
   availability_zone  = "ap-south-1a"
 
   tags = {
-    Name = each.key
+    Name = var.instance_names[count.index]
   }
 }
 
