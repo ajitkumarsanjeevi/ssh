@@ -104,10 +104,10 @@ resource "aws_instance" "example" {
   count              = 0
 
   ami                = each.value.ami_id
-  instance_type      = each.value.instance_type
-  key_name           = each.value.key_name
-  subnet_id          = each.value.subnet_id
-  availability_zone  = each.value.availability_zone  
+  instance_type      = "t2.micro"
+  key_name           = "splunk"
+  subnet_id          = aws_subnet.public_subnet_1.id
+  availability_zone  = "ap-south-1a"
 
   tags = {
     Name = each.key
