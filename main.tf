@@ -101,7 +101,7 @@ resource "aws_security_group" "efs-sg" {
   }
 }	
 resource "aws_instance" "example" {
-  for_each = var.ec2_instances
+  count              = 0
 
   ami                = each.value.ami_id
   instance_type      = each.value.instance_type
