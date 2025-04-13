@@ -29,30 +29,5 @@ default = ["instance-1", "instance-2", "instance-3"]
 
 }
 
-variable "ec2_instances" {
-  type = map(object({
-    ami_id        = string
-    instance_type = string
-    key_name      = string
-    subnet_id     = string
-    availability_zone = string
-  }))
-  default = {
-    instance_1 = {
-      ami_id        = "ami-0e35ddab05955cf57"
-      instance_type = "t2.micro"
-      key_name      = "splunk"
-      subnet_id     = "subnet-03e97876e887c8c5f" 
-      availability_zone = "ap-south-1a" 
-      
-    }
-  }
-}
-
-
-
-
-
-
 
   
