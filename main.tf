@@ -101,9 +101,8 @@ resource "aws_security_group" "efs-sg" {
   }
 }	
 resource "aws_instance" "example" {
-  count              = 0
-
-  ami                = each.value.ami_id
+  count              = length(var.instance_names)
+  ami                = "                     "
   instance_type      = "t2.micro"
   key_name           = "splunk"
   subnet_id          = aws_subnet.public_subnet_1.id
