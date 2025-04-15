@@ -19,7 +19,7 @@ echo "Attaching AmazonS3FullAccess policy to the role..."
 
 aws iam attach-role-policy \
     --role-name $ROLE_NAME \
-    --policy-arn arn:aws:iam::aws:policy/AdministratorAccess 
+    --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess
 
 aws iam create-instance-profile \
     --instance-profile-name $INSTANCE_PROFILE_NAME
