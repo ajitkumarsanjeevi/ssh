@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set +e
 ROLE_NAME="adminrole"
 
 region="ap-south-1"
