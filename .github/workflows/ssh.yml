@@ -44,10 +44,7 @@ jobs:
       - name: destroy
         run: terraform destroy -auto-approve
 
-      - name: role
-        run: |
-          set +e         
-          sh role.sh
+      
       
         
 
