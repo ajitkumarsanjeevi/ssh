@@ -47,9 +47,10 @@ aws iam add-role-to-instance-profile \
 aws ec2 associate-iam-instance-profile \
     --instance-id $1 \
     --iam-instance-profile Name=$INSTANCE_PROFILE_NAME
-    if [ $? -eq 1 ]; then
+     if [ $? -eq 1 ]; then
     echo "Already exists"
     fi
+
 
 }
 
@@ -59,6 +60,10 @@ instance_ids=$(aws ec2 describe-instances --query "Reservations[*].Instances[*].
 for instanceid in "$instance_ids"; do
 iam_fullaccess "$instanceid"
 done
+ if [ $? -eq 1 ]; then
+    echo "Already exists"
+    fi
+
 
 
 
