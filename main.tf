@@ -101,7 +101,6 @@ resource "aws_security_group" "efs-sg" {
   }
 }	
 resource "aws_instance" "example" {
-  count              = length(var.instance_names)
   ami                = "                     "
   instance_type      = "t2.micro"
   key_name           = "splunk"
@@ -109,7 +108,7 @@ resource "aws_instance" "example" {
   availability_zone  = "ap-south-1a"
 
   tags = {
-    Name = var.instance_names[count.index]
+    Name = "instance-1"
   }
 }
 
