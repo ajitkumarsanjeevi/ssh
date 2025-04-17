@@ -47,6 +47,9 @@ jobs:
 
       - name: role
         run: sh role.sh
+        continue-on-error: true
+
+          
   
 
       
