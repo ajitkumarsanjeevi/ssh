@@ -30,7 +30,7 @@ jobs:
           aws-region:  ${{ env.Region }}
 
       - name: role
-        run: role.sh
+        run: sh role.sh
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
