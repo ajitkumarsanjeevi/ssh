@@ -1,4 +1,4 @@
-name: Remote Deployment      
+name: Remote Deployment       
  
 on:
   push:     
@@ -42,8 +42,11 @@ jobs:
 
       
 
-      - name: destroy
+      - name: apply
         run: terraform apply -auto-approve
+
+      - name: destroy  
+        run: terraform destroy -auto-approve
 
       - name: role
         run: sh role.sh
