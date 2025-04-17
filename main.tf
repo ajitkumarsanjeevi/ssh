@@ -105,6 +105,7 @@ resource "aws_instance" "example" {
   instance_type      = "t2.micro"
   key_name           = "splunk"
   subnet_id          = aws_subnet.public_subnet_1.id
+  vpc_security_group_ids = [aws_security_group.efs-sg.id]
   availability_zone  = "ap-south-1a"
 
   tags = {
