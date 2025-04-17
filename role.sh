@@ -47,7 +47,7 @@ aws ec2 associate-iam-instance-profile \
 
 
 
-instance_ids=$(aws ec2 describe-instances --query "Reservations[*].Instances[*].InstanceId" --output text)
+instance_ids=$(aws ec2 describe-instances --region "$region" --query "Reservations[*].Instances[*].InstanceId" --output text)
 for instanceid in $instance_ids; do
 iam_fullaccess "$instanceid"
 done
