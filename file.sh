@@ -1,4 +1,11 @@
 #!/bin/bash 
+
+MOUNT_POINT="/efs"
+
+if [ -d "$MOUNT_POINT" ]; then
+    echo "Directory exists"
+
+else
                                                                             
 ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')
 
