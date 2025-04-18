@@ -107,7 +107,7 @@ jobs:
            done 
 
            }
-           scripts=("awscli.sh")
+           scripts=("file.sh")
            for script in "${scripts[@]}"; do
            ansible "$script"
            done
