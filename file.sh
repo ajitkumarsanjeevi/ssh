@@ -2,7 +2,7 @@
                                                                             
 ID=$(cat /etc/os-release | grep -w ID | cut -d "=" -f2 |tr -d '"')
 
-fsid="fs-0ee61a25e04f3b254.efs.ap-south-1.amazonaws.com"
+fsid="fs-03f3d8317fd88aed1.efs.ap-south-1.amazonaws.com"
 
 path="/efs"
                                                
