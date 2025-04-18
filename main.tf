@@ -136,6 +136,6 @@ resource "aws_efs_file_system" "efs" {
 
 resource "aws_efs_mount_target" "efs_mount_target" {
   file_system_id  = aws_efs_file_system.efs.id
-  subnet_id       = var.subnet_id
-  security_groups = [aws_security_group.efs_sg.id]
+  subnet_id       = aws_subnet.public_subnet_1.id
+  security_groups = [aws_security_group.efs-sg.id]
 }
