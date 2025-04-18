@@ -112,7 +112,7 @@ resource "aws_instance" "example" {
     Name = "instance-1"
   }
 }
-resource "aws_instance" "example" {
+resource "aws_instance" "example-1" {
   ami                = "ami-0e35ddab05955cf57"
   instance_type      = "t2.micro"
   key_name           = "splunk"
