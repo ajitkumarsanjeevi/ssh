@@ -43,11 +43,11 @@ echo "notfound"
   fi
 
 
-sudo mkdir $path
+sudo mkdir $MOUNT_POINT
 
-sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $fsid:/ $path  
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $fsid:/ $MOUNT_POINT
 
-echo "$fsid:/ $path nfs4 defaults,_netdev 0 0" | sudo tee -a /etc/fstab    
+echo "$fsid:/ $MOUNT_POINT nfs4 defaults,_netdev 0 0" | sudo tee -a /etc/fstab    
 
 
 
