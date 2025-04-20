@@ -105,7 +105,7 @@ jobs:
   
            for ip in "${ips[@]}"; do
 
-           if [[ "$usernames" == "ubuntu" ]]
+           if [[ "$username" == "ubuntu" ]]
 
            
 
