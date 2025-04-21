@@ -41,62 +41,15 @@ jobs:
       - name: plan
         run: terraform plan
 
-      
-       
-
-      
-
-      
-
-     
-
-          
-  
-
-      
-      
-        
-
-      
-      
-
-      
-
-      
-              
-
-
-      
-
-
-     
-            
-        
-          
-
-      
-
-      
-
-    
-
-      
-
       - name: ssh    
         run: |    
 
             
-               
-
                 mkdir -p ~/.ssh   
                 echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
                 chmod 600 ~/.ssh/id_rsa 
             
     
-      
-            
-
-
       - name: ssh 
         run: | 
 
@@ -118,11 +71,6 @@ jobs:
            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$1"  "$username"@"$ip":/opt         &> /dev/null
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$1" &> /dev/null 
 
-          
-
-       
-
-                
            done
            done 
 
