@@ -42,9 +42,9 @@
         opts: "nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport"
         state: mounted
 
-     - name: Ensure NFS mount is present in /etc/fstab
-       ansible.builtin.lineinfile:
-       path: /etc/fstab
-       line: "{{ fsid }}:/ {{ mount_point }} nfs4 defaults,_netdev 0 0"
-       create: yes
-       state: present   
+    - name: Ensure NFS mount is present in /etc/fstab
+      ansible.builtin.lineinfile:
+        path: /etc/fstab
+        line: "{{ fsid }}:/ {{ mount_point }} nfs4 defaults,_netdev 0 0"
+        create: yes
+        state: present   
