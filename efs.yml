@@ -32,13 +32,13 @@
       package:
         name: nfs-common
         state: present
-      when: os_release.stdout | search("ID=\"ubuntu\"") or os_release.stdout | search("ID=\"debian\"")
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 
     - name: Install NFS utilities for RedHat/CentOS or Amazon Linux
       package:
         name: nfs-utils
         state: present
-      when: os_release.stdout | search("ID=\"rhel\"") or os_release.stdout | search("ID=\"amzn\"")
+      when: ansible_distribution == "RedHat" or ansible_distribution == "Amazon"
 
     - name: Mount the EFS file system
       mount:
