@@ -36,16 +36,9 @@ jobs:
       - name: ssh    
         run: |    
 
-                if [ -d "$HOME/.ssh" ]; then
-                echo "directory exists"
-                else
-                echo "Creating ~/.ssh and setting up key"
-                mkdir -p "$HOME/.ssh"
-                fi
-
-                echo "${{ secrets.splunk }}" > "$HOME/.ssh/id_rsa"
-                chmod 600 "$HOME/.ssh/id_rsa"
-            
+                mkdir -p ~/.ssh   
+                echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
+                chmod 600 ~/.ssh/id_rsa 
     
       - name: ssh 
         run: | 
