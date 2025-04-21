@@ -84,9 +84,18 @@ jobs:
 
       - name: ssh    
         run: |    
+
+            directory="~/.ssh"
+
+            if [ -d "$directory" ]; then
+            echo "Directory exists"
+            else
+              
+
             mkdir -p ~/.ssh   
             echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
             chmod 600 ~/.ssh/id_rsa 
+            fi
     
       
             
