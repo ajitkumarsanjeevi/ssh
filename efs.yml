@@ -1,0 +1,48 @@
+---
+- name: Mount Amazon EFS if not already mounted
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  vars:
+    mount_point: "/efs"
+    fsid: "fs-03f3d8317fd88aed1.efs.ap-south-1.amazonaws.com"
+    fstab_entry: "{{ fsid }}:/ {{ mount_point }} nfs4 defaults,_netdev 0 0"
+
+  tasks:
+
+    - name: Check if the mount point directory exists
+      stat:
+        path: "{{ mount_point }}"
+      register: mount_point_stat
+
+    - name: Create the mount point directory if it doesn't exist
+      file:
+        path: "{{ mount_point }}"
+        state: directory
+      when: not mount_point_stat.stat.exists
+
+    - name: Check the Linux distribution
+      command: cat /etc/os-release
+      register: os_release
+      changed_when: false
+
+    - name: Install NFS utilities for Ubuntu/Debian-based systems
+      package:
+        name: nfs-common
+        state: present
+      when: os_release.stdout | search("ID=\"ubuntu\"") or os_release.stdout | search("ID=\"debian\"")
+
+    - name: Install NFS utilities for RedHat/CentOS or Amazon Linux
+      package:
+        name: nfs-utils
+        state: present
+      when: os_release.stdout | search("ID=\"rhel\"") or os_release.stdout | search("ID=\"amzn\"")
+
+    - name: Mount the EFS file system
+      mount:
+        path: "{{ mount_point }}"
+        src: "{{ fsid }}:/"
+        fstype: nfs4
+        opts: "nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport"
+        state: mounted
