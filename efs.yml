@@ -6,7 +6,8 @@
 
   vars:
     mount_point: "/efs"
-    fsid: "fs-03f3d8317fd88aed1.efs.ap-south-1.amazonaws.com"
+    fsid: "fs-081f6df64ed050884.efs.ap-south-1.amazonaws.com"
+                                                     
     fstab_entry: "{{ fsid }}:/ {{ mount_point }} nfs4 defaults,_netdev 0 0"
 
   tasks:
