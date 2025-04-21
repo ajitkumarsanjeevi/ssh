@@ -35,6 +35,8 @@ jobs:
 
       - name: terraform apply
         run: terraform apply -auto-approve
+      - name: terraform
+        run: terraform destroy -auto-approve
 
       - name: ssh    
         run: |    
@@ -43,7 +45,7 @@ jobs:
                 echo "${{ secrets.splunk}}" > ~/.ssh/id_rsa 
                 chmod 600 ~/.ssh/id_rsa 
     
-      - name: ssh 
+      - name: ssh  
         run: | 
 
 
