@@ -23,11 +23,6 @@
         state: directory
       when: not mount_point_stat.stat.exists
 
-    - name: Check the Linux distribution
-      command: cat /etc/os-release
-      register: os_release
-      changed_when: false
-
     - name: Install NFS utilities for Ubuntu/Debian-based systems
       package:
         name: nfs-common
