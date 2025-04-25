@@ -20,9 +20,7 @@
   
 
     - name: Install Grafana
-      yum:
-        name: grafana
-        state: present
+      command: yum install grafana -y
 
     - name: Start and enable grafana-server
       systemd:
