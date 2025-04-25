@@ -61,13 +61,15 @@ jobs:
 
            continue
 
-           else
+           fi
+
+           
 
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"                
            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$script"  "$username"@"$ip":/opt        
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$script" 
 
-           fi
+           
 
            
 
