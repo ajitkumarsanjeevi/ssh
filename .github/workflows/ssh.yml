@@ -57,7 +57,7 @@ jobs:
   
            for ip in "${ips[@]}"; do
 
-           if [[ "$ip" == "13.234.240.125" ]]; then
+           if [[ "$ip" == "13.233.139.24" ]]; then
 
            continue
 
