@@ -48,7 +48,7 @@ jobs:
         run: | 
 
 
-           
+           set +e
            script="node_exporter.sh"
            usernames=("ubuntu" "ec2-user" "admin") 
            ips=($(aws ec2 describe-instances --region  ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
