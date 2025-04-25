@@ -1,7 +1,7 @@
 #!/bin/bash
 cd /opt
 
-sudo yum install wget -y 
+sudo apt  install wget -y 
 
 sudo wget https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz
 
@@ -9,7 +9,7 @@ sudo tar xf node_exporter-1.9.1.linux-amd64.tar.gz
 
 sudo mv node_exporter-1.9.1.linux-amd64 node_exporter
 
-sudo cd node_exporter
+cd node_exporter
 
-sudo ./node_exporter 
+./node_exporter 
 
