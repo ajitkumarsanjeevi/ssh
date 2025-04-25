@@ -120,7 +120,7 @@ jobs:
       - name: ansible
         run: |
            export ANSIBLE_HOST_KEY_CHEKING=False
-           ansible-playbook -i hosts efs.yml
+           ansible-playbook -i hosts grafana.yml
            
            
                   
