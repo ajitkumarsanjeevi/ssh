@@ -57,7 +57,7 @@ jobs:
   
            for ip in "${ips[@]}"; do
 
-           if [[ "$ip" == "        "     || "$ip" == "        " ]]; then
+           if [[ "$ip" == "15.206.92.114"     || "$ip" == "3.108.215.110" ]]; then
 
            continue
 
@@ -94,7 +94,7 @@ jobs:
   
            for ip in "${ips[@]}"; do
 
-           if [[ "$ip" == "  " ]]; then
+           if [[ "$ip" == "43.204.142.137" ]]; then
 
 
            
