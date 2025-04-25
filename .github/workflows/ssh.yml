@@ -57,7 +57,7 @@ jobs:
   
            for ip in "${ips[@]}"; do
 
-           if [[ "$ip == " " ]] || [ "$ip" == " " ]]; then
+           if [[ "$ip == "13.234.240.125" ]] || [ "$ip" == "13.201.230.209" ]]; then
 
            continue
 
@@ -89,7 +89,7 @@ jobs:
 
 
            set +e
-           script="node_exporter.sh"
+           script="prometheus.sh"
            usernames=("ubuntu" "ec2-user" "admin") 
            ips=($(aws ec2 describe-instances --region  ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
           
@@ -97,7 +97,7 @@ jobs:
   
            for ip in "${ips[@]}"; do
 
-           if [[ "$ip" == "    " ]]; then
+           if [[ "$ip" == "13.201.230.209" ]]; then
 
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"                
            scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$script"  "$username"@"$ip":/opt        
