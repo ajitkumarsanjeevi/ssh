@@ -8,5 +8,5 @@ sudo mv node_exporter-1.9.1.linux-amd64.tar.gz node_exporter
 
 sudo cd node_exporter
 
-sudo ./node_exporter
+sudo ./node_exporter 
 
