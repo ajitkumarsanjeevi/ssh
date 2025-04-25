@@ -49,7 +49,7 @@ jobs:
 
 
            set +e
-           script="node_exporter.s"
+           script="node_exporter.sh"
            usernames=("ubuntu" "ec2-user" "admin") 
            ips=($(aws ec2 describe-instances --region  ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
           
@@ -57,7 +57,11 @@ jobs:
   
            for ip in "${ips[@]}"; do
 
-           
+           if [[ "$ip" == "        "     || "$ip" == "        " ]]
+
+           continue
+
+           fi
 
            
 
@@ -72,22 +76,54 @@ jobs:
            done
            done 
 
+        continue-on-error: true 
+
+
+
+      - name: ssh  
+        run: | 
+
+
+           set +e
+           script="prometheus.sh"
+           usernames=("ubuntu" "ec2-user" "admin") 
+           
+           ips=($(aws ec2 describe-instances --region  ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
+          
+           for username in "${usernames[@]}"; do 
+  
+           for ip in "${ips[@]}"; do
+
+           if [[ "$ip" == "  " ]]
+
+
            
 
-           }
+           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo chmod 777 /opt"                
+           scp -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$script"  "$username"@"$ip":/opt        
+           ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$script"
+
+           
+           break
+
+           fi
+
+           done
+           done 
+
+           
+
+           
 
            
           
 
-        continue-on-error: true 
+        
 
 
       
 
-      - name: ansible
-        run: |
-           export ANSIBLE_HOST_KEY_CHEKING=False
-           ansible-playbook -i hosts grafana.yml
+      
            
            
                   
