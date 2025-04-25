@@ -8,7 +8,7 @@
 
     - name: Copy a file to remote host
       ansible.builtin.copy:
-        src: grafana.yml
+        src: grafana.sh
         dest: /opt
 
     - name: execute
