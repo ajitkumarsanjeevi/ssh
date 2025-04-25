@@ -45,7 +45,7 @@ jobs:
                 chmod 600 ~/.ssh/id_rsa 
     
       - name: ssh  
-        run: | 
+        run: 
 
 
            set +e
