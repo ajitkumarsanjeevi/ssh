@@ -4,26 +4,12 @@
   become: true
 
   tasks:
-    - name: Add Grafana YUM repository
-      copy:
-        dest: /etc/yum.repos.d/grafana.repo
-        content: |
-          [grafana]
-          name=grafana
-          baseurl=https://rpm.grafana.com
-          repo_gpgcheck=1
-          enabled=1
-          gpgcheck=1
-          gpgkey=https://rpm.grafana.com/gpg.key
-          sslverify=1
-          sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-  
+    
 
-    - name: Install Grafana
-      command: yum install grafana -y
+    - name: Copy a file to remote host
+      ansible.builtin.copy:
+        src: grafana.yml
+        dest: /opt
 
-    - name: Start and enable grafana-server
-      systemd:
-        name: grafana-server
-        enabled: yes
-        state: started
+    - name: execute
+      command: sh /opt/grafana.sh
