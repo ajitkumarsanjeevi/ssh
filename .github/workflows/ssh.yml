@@ -66,6 +66,8 @@ jobs:
            done
            done 
 
+           
+
            }
 
            
@@ -94,6 +96,7 @@ jobs:
            ssh -o StrictHostKeyChecking=no -i  ~/.ssh/id_rsa "$username"@"$ip" "sudo bash /opt/$script" 
 
            break
+           fi
 
            
 
