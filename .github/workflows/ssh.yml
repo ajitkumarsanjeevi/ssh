@@ -65,6 +65,7 @@ jobs:
 
            done
            done 
+           scripts=("file.sh "prometheus.sh")
 
       - name: ansible
         run: |
