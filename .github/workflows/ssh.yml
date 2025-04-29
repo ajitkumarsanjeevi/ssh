@@ -49,7 +49,7 @@ jobs:
 
 
            set +e
-           script="awscli.sh"
+           efs(){
            usernames=("ubuntu" "ec2-user" "admin") 
            ips=($(aws ec2 describe-instances --region  ${{ env.Region }} --query "Reservations[].Instances[].[PublicIpAddress]" --output text))     
           
@@ -65,7 +65,15 @@ jobs:
 
            done
            done 
-           scripts=("file.sh "prometheus.sh")
+           }
+           
+           scripts=("file.sh" "prometheus.sh")
+           for script in for "${scripts[@]}"; do
+           efs "$script"
+           done
+           
+           
+           
 
       - name: ansible
         run: |
