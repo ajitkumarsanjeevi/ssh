@@ -67,7 +67,7 @@ jobs:
            done 
            }
            
-           scripts=("file.sh" "prometheus.sh")
+           scripts=("prometheus.sh")
            for script in for "${scripts[@]}"; do
            efs "$script"
            done
