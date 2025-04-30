@@ -1,4 +1,11 @@
 #!/bin/bash
+
+PROMETHEUS_DIR="/opt/node_exporter"
+
+# Check if the directory exists
+if [ -d "$node_exporter" ]; then
+  echo "Prometheus directory exists at $PROMETHEUS_DIR"
+else
 cd /opt
 
 sudo apt install wget -y 
