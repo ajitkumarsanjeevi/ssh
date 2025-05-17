@@ -13,7 +13,7 @@ resource "aws_vpc" "main" {
   }
 }
 
-resource "aws_subnet" "public_subnet_1" {    
+resource "aws_subnet" "public_subnet" {    
   vpc_id                  = aws_vpc.main.id      
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = var.is_enabled
@@ -24,7 +24,7 @@ resource "aws_subnet" "public_subnet_1" {
   }
 }
 
-resource "aws_subnet" "public_subnet_2" {
+resource "aws_subnet" "private_subnet" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.2.0/24"
   map_public_ip_on_launch = var.is_enabled
@@ -56,14 +56,22 @@ resource "aws_route_table" "public_rt" {
   }
 }
 
+resource "aws_route_table" "private_rt" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "Private Route Table"
+  }
+}
+
 resource "aws_route_table_association" "subnet_1_assoc" {
-  subnet_id      = aws_subnet.public_subnet_1.id
+  subnet_id      = aws_subnet.public_subnet.id
   route_table_id = aws_route_table.public_rt.id
 }
 
 resource "aws_route_table_association" "subnet_2_assoc" {
-  subnet_id      = aws_subnet.public_subnet_2.id
-  route_table_id = aws_route_table.public_rt.id
+  subnet_id      = aws_subnet.private_subnet.id
+  route_table_id = aws_route_table.private_rt.id
 }
 
 resource "aws_security_group" "efs-sg" {
@@ -101,6 +109,7 @@ resource "aws_security_group" "efs-sg" {
   }
 }	
 resource "aws_instance" "example" {
+  count              = 0
   ami                = "ami-0e35ddab05955cf57"
   instance_type      = "t2.micro"
   key_name           = "splunk"
@@ -113,6 +122,7 @@ resource "aws_instance" "example" {
   }
 }
 resource "aws_instance" "example-1" {
+  count              = 0
   ami                = "ami-0e35ddab05955cf57"
   instance_type      = "t2.micro"
   key_name           = "splunk"
@@ -126,16 +136,3 @@ resource "aws_instance" "example-1" {
 }
 
 
-resource "aws_efs_file_system" "efs" {
-  creation_token = "my-efs"
-  performance_mode = "generalPurpose"
-  tags = {
-    Name = "my-efs"
-  }
-}
-
-resource "aws_efs_mount_target" "efs_mount_target" {
-  file_system_id  = aws_efs_file_system.efs.id
-  subnet_id       = aws_subnet.public_subnet_1.id
-  security_groups = [aws_security_group.efs-sg.id]
-}
