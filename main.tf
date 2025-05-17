@@ -113,7 +113,7 @@ resource "aws_instance" "example" {
   ami                = "ami-0e35ddab05955cf57"
   instance_type      = "t2.micro"
   key_name           = "splunk"
-  subnet_id          = aws_subnet.public_subnet_1.id
+  subnet_id          = aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
   availability_zone  = "ap-south-1a"
 
@@ -126,7 +126,7 @@ resource "aws_instance" "example-1" {
   ami                = "ami-0e35ddab05955cf57"
   instance_type      = "t2.micro"
   key_name           = "splunk"
-  subnet_id          = aws_subnet.public_subnet_1.id
+  subnet_id          = aws_subnet.private_subnet.id
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
   availability_zone  = "ap-south-1a"
 
