@@ -35,7 +35,7 @@ jobs:
 
       
       - name: terraform
-        run: terraform destroy -auto-approve
+        run: terraform apply -auto-approve
 
       - name: ssh    
         run: |    
