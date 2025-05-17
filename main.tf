@@ -128,7 +128,7 @@ resource "aws_instance" "example-1" {
   key_name           = "splunk"
   subnet_id          = aws_subnet.private_subnet.id
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
-  availability_zone  = "ap-south-1a"
+  availability_zone  = "ap-south-1b"
 
   tags = {
     Name = "instance-2"
