@@ -123,7 +123,7 @@ resource "aws_instance" "example" {
 resource "aws_instance" "instance" {
   
   ami                = "ami-0af9569868786b23a"
-  instance_type      = "t2.micro"
+  instance_type      = "t2.small"
   key_name           = "splunk"
   subnet_id          = aws_subnet.private_subnet.id
   vpc_security_group_ids = [aws_security_group.efs-sg.id]
